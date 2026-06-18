@@ -143,7 +143,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                         maxWidth: "100%",
                         maxHeight: 40,
                         objectFit: "contain",
-                        filter: client.name === "GAIB" ? "invert(1)" : "none",
+                        filter: client.name === "NicheSim" ? "invert(1)" : "none",
                       }}
                     />
                   ) : (
