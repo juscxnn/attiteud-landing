@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 type Lang = "en" | "cn" | "fr";
 
@@ -49,15 +49,6 @@ const translations: Record<Lang, Record<string, string>> = {
     "uc_marketing_name": "Marketing",
     "uc_product_tag": "Ship faster",
     "uc_product_name": "Product & Engineering",
-
-    research_stats_label: "The Market",
-    research_stats_heading: "The numbers speak",
-    stat_1_label: "Added to global GDP by 2030",
-    stat_2_label: "Productivity uplift from AI teams",
-    stat_3_label: "Of SMEs have no AI strategy",
-    stat_4_label: "Reduction in back-office time",
-    stat_5_label: "Of AI projects never ship",
-    stat_6_label: "Typical payback period",
 
     research_stats_label: "The Market",
     research_stats_heading: "The numbers speak",

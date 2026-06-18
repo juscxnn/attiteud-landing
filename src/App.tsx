@@ -3,8 +3,7 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { useLang, LangProvider } from "./hooks/useLang";
-import LanguageToggle from "./components/LanguageToggle";
+import { LangProvider } from "./hooks/useLang";
 import AsciiCanvas from "./components/AsciiCanvas";
 import LoadingScreen from "./components/LoadingScreen";
 import Navigation from "./sections/Navigation";

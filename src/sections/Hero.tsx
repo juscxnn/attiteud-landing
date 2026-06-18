@@ -163,7 +163,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           >
             {t("nav_cta")}
           </a>
-            {t(
+          <button
             onClick={() => onScrollTo("capabilities")}
             className="font-sans transition-all duration-300 w-full sm:w-auto"
             style={{
