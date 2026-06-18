@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLang } from "../hooks/useLang";
 import gsap from "gsap";
 import FlashingText from "../components/FlashingText";
 
@@ -8,6 +9,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onScrollTo, loaded }: HeroProps) {
+  const { t } = useLang();
   const labelRef = useRef<HTMLSpanElement>(null);
   const line1 = useRef<HTMLDivElement>(null);
   const line2 = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             transform: "translateY(12px)",
           }}
         >
-          Forward Deployment Studio
+          {t("hero_label")}
         </span>
 
         <h1 className="font-sans" style={{ marginBottom: "clamp(16px, 3vw, 32px)", width: "100%" }}>
@@ -75,7 +77,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             }}
           >
             <FlashingText
-              text="Sharpen your operations,"
+              text={t("hero_line1")}
               flashColor="#c45c26"
               as="span"
               style={{
@@ -101,7 +103,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             }}
           >
             <FlashingText
-              text="multiply your output"
+              text={t("hero_line2")}
               flashColor="#c45c26"
               as="span"
               style={{
@@ -130,7 +132,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             padding: "0 12px",
           }}
         >
-          Most teams use AI at a fraction of its potential. We find the drag in your operations and implement the right AI tools directly into your systems.
+          {t("hero_desc")}
         </p>
 
         <div
@@ -158,7 +160,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#c45c26"; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1e1c18"; }}
           >
-            Book a Call
+            {t("nav_cta")}
           </a>
           <button
             onClick={() => onScrollTo("capabilities")}
@@ -183,7 +185,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
               e.currentTarget.style.borderColor = "rgba(30,28,24,0.18)";
             }}
           >
-            Explore Capabilities
+            {t("hero_explore")}
           </button>
         </div>
       </div>

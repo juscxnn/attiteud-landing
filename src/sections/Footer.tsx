@@ -1,4 +1,8 @@
+import { useLang } from "../hooks/useLang";
+
 export default function Footer() {
+  const { t } = useLang();
+
   return (
     <footer
       style={{
@@ -30,10 +34,10 @@ export default function Footer() {
         </span>
         <div className="flex items-center" style={{ gap: 24 }}>
           <span className="font-sans" style={{ fontSize: 13, color: "#5a544f" }}>
-            Privacy
+            {t("footer_privacy")}
           </span>
           <span className="font-sans" style={{ fontSize: 13, color: "#5a544f" }}>
-            Terms
+            {t("footer_terms")}
           </span>
         </div>
       </div>

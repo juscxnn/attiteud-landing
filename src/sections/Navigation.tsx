@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { useLang } from "../hooks/useLang";
+import LanguageToggle from "../components/LanguageToggle";
+
 interface NavigationProps {
   onScrollTo: (id: string) => void;
 }
 
 export default function Navigation({ onScrollTo }: NavigationProps) {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [inDark, setInDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,12 +36,8 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
   }, []);
 
   const links = [
-    { label: "Capabilities", id: "capabilities" },
-    { label: "Pricing", id: "pricing" },
-    { label: "Research", id: "research" },
-    { label: "Approach", id: "approach" },
-    { label: "Use Cases", id: "use-cases" },
-    { label: "Contact", id: "contact" },
+    { label: t("nav_work"), id: "capabilities" },
+    { label: t("nav_contact"), id: "contact" },
   ];
 
   const textColor = inDark ? "#e8e4dc" : "#1e1c18";
@@ -73,14 +73,14 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
           border: "none",
           cursor: "pointer",
           fontFamily: "'Times New Roman', Times, serif",
-          fontSize: 18,
+          fontSize: 26,
           letterSpacing: "0.02em",
           display: "flex",
           alignItems: "center",
           zIndex: 102,
         }}
       >
-        <span style={{ fontSize: 20, lineHeight: 1, marginRight: 2 }}>✽</span>
+        <span style={{ fontSize: 30, lineHeight: 1, marginRight: 3 }}>✽</span>
         <span>Attiteud</span>
         <span style={{ opacity: 0.5 }}>.</span>
       </button>
@@ -101,6 +101,7 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
             />
           </button>
         ))}
+        <LanguageToggle />
         <a
           href="https://tidycal.com/attiteud/chat"
           target="_blank"
@@ -117,7 +118,7 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
             display: "inline-block",
           }}
         >
-          Book a Call
+          {t("nav_cta")}
         </a>
       </div>
 
@@ -212,8 +213,11 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
               marginTop: 8,
             }}
           >
-            Book a Call
+            {t("nav_cta")}
           </a>
+          <div style={{ marginTop: 16 }}>
+            <LanguageToggle />
+          </div>
         </div>
       )}
     </nav>

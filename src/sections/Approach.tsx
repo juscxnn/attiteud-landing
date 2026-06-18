@@ -1,16 +1,17 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  { number: "01", title: "Map", description: "We find the tasks that eat time and the information that goes missing." },
-  { number: "02", title: "Design", description: "We pick the right tools for your workflow. Custom agents when nothing off-the-shelf fits." },
-  { number: "03", title: "Deploy", description: "Everything goes live in your existing stack. No new platforms to learn." },
-  { number: "04", title: "Optimise", description: "We stay close, refine, and make sure your investment keeps compounding." },
+const stepKeys = [
+  { number: "01", titleKey: "approach_step1_title", descKey: "approach_step1_text" },
+  { number: "02", titleKey: "approach_step2_title", descKey: "approach_step2_text" },
+  { number: "03", titleKey: "approach_step3_title", descKey: "approach_step3_text" },
+  { number: "04", titleKey: "approach_step4_title", descKey: "approach_step4_text" },
 ];
 
 interface ApproachProps {
@@ -18,6 +19,7 @@ interface ApproachProps {
 }
 
 export default function Approach({ onScrollTo }: ApproachProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -68,10 +70,10 @@ export default function Approach({ onScrollTo }: ApproachProps) {
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
-            Our Approach
+            {t("approach_label")}
           </span>
           <FlashingText
-            text="How we work"
+            text={t("approach_heading")}
             flashColor="#c45c26"
             baseColor="#e8e4dc"
             as="h2"
@@ -86,7 +88,7 @@ export default function Approach({ onScrollTo }: ApproachProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(24px, 3vw, 40px)" }}>
-          {steps.map((step, i) => (
+          {stepKeys.map((step, i) => (
             <div
               key={step.number}
               ref={(el) => { stepsRef.current[i] = el; }}
@@ -101,14 +103,14 @@ export default function Approach({ onScrollTo }: ApproachProps) {
               </span>
               <div>
                 <FlashingText
-                  text={step.title}
+                  text={t(step.titleKey)}
                   flashColor="#c45c26"
                   baseColor="#e8e4dc"
                   as="h3"
                   style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.35, color: "#e8e4dc", marginBottom: 6 }}
                 />
                 <p className="font-sans" style={{ fontSize: 14, lineHeight: 1.6, color: "#7a746d", maxWidth: "36ch" }}>
-                  {step.description}
+                  {t(step.descKey)}
                 </p>
               </div>
             </div>

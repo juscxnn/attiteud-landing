@@ -1,38 +1,36 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const clients = [
+const clientKeys = [
   {
-    name: "NicheSim",
+    id: "nichesim",
     logo: "/nichesim-logo.png",
-    tag: "BD & Prospecting",
-    outcome: ">8 hours saved per week. 3x BD productivity without expanding the team.",
-    story:
-      "An autonomous scheduling AI agent conducted research across 14 regions, pulled accurate data into their CRM, prepped outreach, and handled email responses plus MSA/agreement drafting and review. Full end-to-end BD automation.",
-    metrics: ["3x BD growth", ">8h/week saved", "14 regions"],
+    nameKey: "client_nichesim_name",
+    tagKey: "client_nichesim_tag",
+    storyKey: "client_nichesim_story",
+    metricsKey: "client_nichesim_metrics",
   },
   {
-    name: "GAIB",
+    id: "gaib",
     logo: "/gaib-logo.png",
-    tag: "Competitive Research & Ops",
-    outcome: "Hours of research saved per week. Deep competitive intelligence delivered every morning.",
-    story:
-      "Agents and automations for deep competitive research on and off-chain. Every morning each party received curated intelligence straight into their inbox. Internally, an ops agent synced logic across all functions and kept the team aligned without meetings.",
-    metrics: ["Daily intel", "Off-chain research", "Cross-functional sync"],
+    nameKey: "client_gaib_name",
+    tagKey: "client_gaib_tag",
+    storyKey: "client_gaib_story",
+    metricsKey: "client_gaib_metrics",
   },
   {
-    name: "Confidential — Enterprise SaaS",
+    id: "confidential",
     logo: null,
-    tag: "Customer Success & Engineering",
-    outcome: "20% ticket reduction. 30% faster response times. GTM 2x faster than planned.",
-    story:
-      "We developed and implemented Hermes, a self-learning agent that grew and embedded itself with the team's knowledge. It reduced tickets by 20% and increased responsiveness by 30% with average response time under 5 minutes. Developers worked cohesively while remote, and product + sales shipped to market 2x faster than initially planned.",
-    metrics: ["20% fewer tickets", "<5 min response", "2x faster GTM"],
+    nameKey: "client_confidential_name",
+    tagKey: "client_confidential_tag",
+    storyKey: "client_confidential_story",
+    metricsKey: "client_confidential_metrics",
   },
 ];
 
@@ -41,6 +39,7 @@ interface SocialProofProps {
 }
 
 export default function SocialProof({ onScrollTo }: SocialProofProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -91,10 +90,10 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
-            Who We Work With
+            {t("clients_label")}
           </span>
           <FlashingText
-            text="Proof, not promises"
+            text={t("clients_heading")}
             flashColor="#c45c26"
             baseColor="#e8e4dc"
             as="h2"
@@ -117,14 +116,14 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
               margin: "12px auto 0",
             }}
           >
-            Real deployments. Real results. Specific teams, specific wins.
+            {t("clients_subtitle")}
           </p>
         </div>
 
         <div className="flex flex-col" style={{ gap: 0 }}>
-          {clients.map((client, i) => (
+          {clientKeys.map((client, i) => (
             <div
-              key={client.name}
+              key={client.id}
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
                 borderTop: "1px solid rgba(232, 228, 220, 0.06)",
@@ -138,12 +137,12 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                   {client.logo ? (
                     <img
                       src={client.logo}
-                      alt={client.name}
+                      alt={t(client.nameKey)}
                       style={{
                         maxWidth: "100%",
                         maxHeight: 40,
                         objectFit: "contain",
-                        filter: client.name === "NicheSim" ? "invert(1)" : "none",
+                        filter: client.id === "nichesim" ? "invert(1)" : "none",
                       }}
                     />
                   ) : (
@@ -151,7 +150,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                       className="font-sans"
                       style={{ fontSize: 14, fontWeight: 500, color: "#e8e4dc", letterSpacing: "0.01em" }}
                     >
-                      {client.name}
+                      {t(client.nameKey)}
                     </span>
                   )}
                 </div>
@@ -160,7 +159,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                 <div style={{ flex: 1 }}>
                   <div className="flex items-baseline flex-wrap" style={{ gap: 12, marginBottom: 10 }}>
                     <FlashingText
-                      text={client.name}
+                      text={t(client.nameKey)}
                       flashColor="#c45c26"
                       baseColor="#e8e4dc"
                       as="h3"
@@ -170,7 +169,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                       className="font-mono"
                       style={{ fontSize: 10, letterSpacing: "0.06em", color: "#7a9e7e", textTransform: "uppercase" }}
                     >
-                      {client.tag}
+                      {t(client.tagKey)}
                     </span>
                   </div>
 
@@ -178,13 +177,13 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                     className="font-sans"
                     style={{ fontSize: 13, lineHeight: 1.55, color: "#7a746d", maxWidth: "50ch", marginBottom: 12 }}
                   >
-                    {client.story}
+                    {t(client.storyKey)}
                   </p>
 
                   <div className="flex flex-wrap" style={{ gap: 8 }}>
-                    {client.metrics.map((metric) => (
+                    {t(client.metricsKey).split(",").map((metric) => (
                       <span
-                        key={metric}
+                        key={metric.trim()}
                         className="font-mono"
                         style={{
                           fontSize: 10,
@@ -195,7 +194,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                           padding: "4px 10px",
                         }}
                       >
-                        {metric}
+                        {metric.trim()}
                       </span>
                     ))}
                   </div>

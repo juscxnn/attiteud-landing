@@ -3,6 +3,8 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useLang, LangProvider } from "./hooks/useLang";
+import LanguageToggle from "./components/LanguageToggle";
 import AsciiCanvas from "./components/AsciiCanvas";
 import LoadingScreen from "./components/LoadingScreen";
 import Navigation from "./sections/Navigation";
@@ -18,7 +20,7 @@ import SocialProof from "./sections/SocialProof";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
+function AppInner() {
   const lenisRef = useRef<Lenis | null>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -71,6 +73,14 @@ function App() {
         <Footer />
       </main>
     </>
+  );
+}
+
+function App() {
+  return (
+    <LangProvider>
+      <AppInner />
+    </LangProvider>
   );
 }
 

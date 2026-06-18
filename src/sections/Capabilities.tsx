@@ -1,24 +1,16 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const capabilities = [
-  {
-    title: "Workflow Audit",
-    description: "We map where your teams lose time. The handoffs, the repetition, the work nobody talks about anymore.",
-  },
-  {
-    title: "AI Strategy & Tool Selection",
-    description: "We match the right AI tools to your actual problems. When nothing off-the-shelf fits, we build custom agents that do.",
-  },
-  {
-    title: "Implementation",
-    description: "We embed directly into your stack. Your teams see results where they already work. That is the standard.",
-  },
+const capKeys = [
+  { titleKey: "cap_1_title", descKey: "cap_1_desc" },
+  { titleKey: "cap_2_title", descKey: "cap_2_desc" },
+  { titleKey: "cap_3_title", descKey: "cap_3_desc" },
 ];
 
 interface CapabilitiesProps {
@@ -26,6 +18,7 @@ interface CapabilitiesProps {
 }
 
 export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -75,10 +68,10 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
-            What We Do
+            {t("capabilities_label")}
           </span>
           <FlashingText
-            text="Find the drag. Remove it."
+            text={t("capabilities_heading")}
             flashColor="#c45c26"
             as="h2"
             style={{
@@ -92,9 +85,9 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
         </div>
 
         <div className="flex flex-col" style={{ gap: 0 }}>
-          {capabilities.map((cap, i) => (
+          {capKeys.map((cap, i) => (
             <div
-              key={cap.title}
+              key={cap.titleKey}
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
                 borderTop: "1px solid rgba(30, 28, 24, 0.08)",
@@ -116,7 +109,7 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
                 </span>
                 <div style={{ flex: 1 }}>
                   <FlashingText
-                    text={cap.title}
+                    text={t(cap.titleKey)}
                     flashColor="#c45c26"
                     as="h3"
                     style={{
@@ -137,7 +130,7 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
                       maxWidth: "48ch",
                     }}
                   >
-                    {cap.description}
+                    {t(cap.descKey)}
                   </p>
                 </div>
               </div>

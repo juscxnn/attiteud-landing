@@ -1,18 +1,19 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const departments = [
-  { name: "BD & Prospecting", tag: "Autonomous outreach", pain: "An AI agent researches across regions, preps outreach, handles email responses, and drafts agreements. Your team sells instead of admin-ing." },
-  { name: "Sales", tag: "More selling", pain: "Reps lose hours to research and admin. AI handles prep work so they sell more and type less." },
-  { name: "Customer Success", tag: "Faster resolution", pain: "A self-learning agent embeds with your team's knowledge, reduces tickets by 20%, and responds in under 5 minutes." },
-  { name: "Operations", tag: "Cross-functional sync", pain: "An ops agent syncs logic across all functions, keeps teams aligned, and delivers daily intelligence without meetings." },
-  { name: "Marketing", tag: "Scale output", pain: "Every campaign needs variations and wraps. AI handles production so strategy stays human." },
-  { name: "Product & Engineering", tag: "Ship faster", pain: "AI agents handle competitive research, documentation, and ticket triage so teams ship 2x faster — even remotely." },
+const deptKeys = [
+  { id: "bd", nameKey: "uc_bd_name", tagKey: "uc_bd_tag", painKey: "uc_bd_pain" },
+  { id: "sales", nameKey: "uc_sales_name", tagKey: "uc_sales_tag", painKey: "uc_sales_pain" },
+  { id: "cs", nameKey: "uc_cs_name", tagKey: "uc_cs_tag", painKey: "uc_cs_pain" },
+  { id: "ops", nameKey: "uc_ops_name", tagKey: "uc_ops_tag", painKey: "uc_ops_pain" },
+  { id: "marketing", nameKey: "uc_marketing_name", tagKey: "uc_marketing_tag", painKey: "uc_marketing_pain" },
+  { id: "product", nameKey: "uc_product_name", tagKey: "uc_product_tag", painKey: "uc_product_pain" },
 ];
 
 interface UseCasesProps {
@@ -20,6 +21,7 @@ interface UseCasesProps {
 }
 
 export default function UseCases({ onScrollTo }: UseCasesProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -70,10 +72,10 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
-            Where We Help
+            {t("usecases_label")}
           </span>
           <FlashingText
-            text="By department"
+            text={t("usecases_heading")}
             flashColor="#c45c26"
             baseColor="#e8e4dc"
             as="h2"
@@ -96,14 +98,14 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
               margin: "12px auto 0",
             }}
           >
-            Off-the-shelf tools where they work. Custom agents where they do not. Deployed into Finance, Sales, Ops, Legal, Marketing, and Product.
+            {t("usecases_subtitle")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 12 }}>
-          {departments.map((dept, i) => (
+          {deptKeys.map((dept, i) => (
             <div
-              key={dept.name}
+              key={dept.id}
               ref={(el) => { cardsRef.current[i] = el; }}
               className="group"
               style={{
@@ -124,7 +126,7 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
             >
               <div className="flex items-baseline justify-between" style={{ marginBottom: 10 }}>
                 <FlashingText
-                  text={dept.name}
+                  text={t(dept.nameKey)}
                   flashColor="#c45c26"
                   baseColor="#e8e4dc"
                   as="h3"
@@ -134,11 +136,11 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
                   className="font-mono"
                   style={{ fontSize: 10, letterSpacing: "0.06em", color: "#7a9e7e", textTransform: "uppercase" }}
                 >
-                  {dept.tag}
+                  {t(dept.tagKey)}
                 </span>
               </div>
               <p className="font-sans" style={{ fontSize: 13, lineHeight: 1.55, color: "#7a746d" }}>
-                {dept.pain}
+                {t(dept.painKey)}
               </p>
             </div>
           ))}

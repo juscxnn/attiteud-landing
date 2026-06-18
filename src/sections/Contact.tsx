@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const calRef = useRef<HTMLDivElement>(null);
@@ -69,11 +71,11 @@ export default function Contact() {
           className="font-mono uppercase"
           style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 20, opacity: 0 }}
         >
-          Start Here
+          {t("contact_label")}
         </span>
 
         <FlashingText
-          text="Ready to move forward?"
+          text={t("contact_heading")}
           flashColor="#c45c26"
           as="h2"
           style={{
@@ -97,7 +99,7 @@ export default function Contact() {
             opacity: 0,
           }}
         >
-          Book a 30-minute call. We will diagnose your biggest AI opportunity.
+          {t("contact_subtitle")}
         </p>
 
         <div style={{ opacity: 0 }}>

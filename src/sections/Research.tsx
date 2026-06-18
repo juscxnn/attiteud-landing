@@ -1,18 +1,19 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { figure: "$15.7T", label: "Added to global GDP by 2030", source: "McKinsey" },
-  { figure: "~40%", label: "Productivity uplift from AI teams", source: "Accenture" },
-  { figure: "74%", label: "Of SMEs have no AI strategy", source: "Gartner" },
-  { figure: "~30%", label: "Reduction in back-office time", source: "Deloitte" },
-  { figure: "70%", label: "Of AI projects never ship", source: "McKinsey" },
-  { figure: "18mo", label: "Typical payback period", source: "PwC" },
+  { figure: "$15.7T", labelKey: "stat_1_label", source: "McKinsey" },
+  { figure: "~40%", labelKey: "stat_2_label", source: "Accenture" },
+  { figure: "74%", labelKey: "stat_3_label", source: "Gartner" },
+  { figure: "~30%", labelKey: "stat_4_label", source: "Deloitte" },
+  { figure: "70%", labelKey: "stat_5_label", source: "McKinsey" },
+  { figure: "18mo", labelKey: "stat_6_label", source: "PwC" },
 ];
 
 interface ResearchProps {
@@ -20,6 +21,7 @@ interface ResearchProps {
 }
 
 export default function Research({ onScrollTo }: ResearchProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -70,10 +72,10 @@ export default function Research({ onScrollTo }: ResearchProps) {
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
-            The Market
+            {t("research_stats_label")}
           </span>
           <FlashingText
-            text="The numbers speak"
+            text={t("research_stats_heading")}
             flashColor="#c45c26"
             baseColor="#e8e4dc"
             as="h2"
@@ -91,7 +93,7 @@ export default function Research({ onScrollTo }: ResearchProps) {
         <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap: 12 }}>
           {stats.map((stat, i) => (
             <div
-              key={stat.label}
+              key={stat.labelKey}
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
                 padding: "28px 20px",
@@ -126,7 +128,7 @@ export default function Research({ onScrollTo }: ResearchProps) {
                 className="font-sans"
                 style={{ fontSize: 13, lineHeight: 1.5, color: "#e8e4dc", marginBottom: 6 }}
               >
-                {stat.label}
+                {t(stat.labelKey)}
               </p>
               <span
                 className="font-mono"

@@ -1,19 +1,20 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const includes = [
-  "Full workflow audit",
-  "AI strategy & tool selection",
-  "Implementation into your systems",
-  "Custom agents & automations",
-  "Unlimited access to our team",
-  "Monthly performance review",
-  "Unsubscribe anytime after initial deployment",
+const includeKeys = [
+  "pricing_include_1",
+  "pricing_include_2",
+  "pricing_include_3",
+  "pricing_include_4",
+  "pricing_include_5",
+  "pricing_include_6",
+  "pricing_include_7",
 ];
 
 interface PricingProps {
@@ -21,6 +22,7 @@ interface PricingProps {
 }
 
 export default function Pricing({ onScrollTo }: PricingProps) {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -59,11 +61,11 @@ export default function Pricing({ onScrollTo }: PricingProps) {
           className="font-mono uppercase block"
           style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16, opacity: 0 }}
         >
-          Pricing
+          {t("pricing_label")}
         </span>
 
         <FlashingText
-          text="One flat fee. Full access."
+          text={t("pricing_heading")}
           flashColor="#c45c26"
           as="h2"
           style={{
@@ -87,7 +89,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             opacity: 0,
           }}
         >
-          A forward deployment studio for less than a senior hire. Unsubscribe anytime after the initial deployment phase — come back whenever you need us.
+          {t("pricing_subtitle")}
         </p>
 
         <div
@@ -128,13 +130,13 @@ export default function Pricing({ onScrollTo }: PricingProps) {
               textAlign: "left",
             }}
           >
-            {includes.map((item) => (
-              <div key={item} className="flex items-start" style={{ gap: 10 }}>
+            {includeKeys.map((key) => (
+              <div key={key} className="flex items-start" style={{ gap: 10 }}>
                 <span style={{ fontSize: 12, color: "#7a9e7e", flexShrink: 0, marginTop: 3 }}>
                   ✓
                 </span>
                 <span className="font-sans" style={{ fontSize: 13, lineHeight: 1.5, color: "#6b6560" }}>
-                  {item}
+                  {t(key)}
                 </span>
               </div>
             ))}
@@ -159,7 +161,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#c45c26"; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1e1c18"; }}
           >
-            Book a Call
+            {t("nav_cta")}
           </a>
         </div>
       </div>
