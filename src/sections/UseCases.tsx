@@ -7,12 +7,12 @@ import SectionDivider from "../components/SectionDivider";
 gsap.registerPlugin(ScrollTrigger);
 
 const departments = [
-  { name: "Finance", tag: "Close faster", pain: "Month-end reconciliation eats days. AI handles the matching and flagging so finance moves faster." },
+  { name: "BD & Prospecting", tag: "Autonomous outreach", pain: "An AI agent researches across regions, preps outreach, handles email responses, and drafts agreements. Your team sells instead of admin-ing." },
   { name: "Sales", tag: "More selling", pain: "Reps lose hours to research and admin. AI handles prep work so they sell more and type less." },
-  { name: "Operations", tag: "Faster response", pain: "Context is scattered across tools. AI surfaces the right information so teams fix instead of hunt." },
-  { name: "Legal", tag: "Less grind", pain: "Counsel reads the same clause patterns endlessly. AI extracts what matters so they negotiate instead of scan." },
+  { name: "Customer Success", tag: "Faster resolution", pain: "A self-learning agent embeds with your team's knowledge, reduces tickets by 20%, and responds in under 5 minutes." },
+  { name: "Operations", tag: "Cross-functional sync", pain: "An ops agent syncs logic across all functions, keeps teams aligned, and delivers daily intelligence without meetings." },
   { name: "Marketing", tag: "Scale output", pain: "Every campaign needs variations and wraps. AI handles production so strategy stays human." },
-  { name: "Product", tag: "Clear signal", pain: "Feedback lives everywhere. AI synthesises the full picture so decisions are grounded in evidence." },
+  { name: "Product & Engineering", tag: "Ship faster", pain: "AI agents handle competitive research, documentation, and ticket triage so teams ship 2x faster — even remotely." },
 ];
 
 interface UseCasesProps {
@@ -96,7 +96,7 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
               margin: "12px auto 0",
             }}
           >
-            Off-the-shelf tools where they work. Custom agents where they do not. Practical improvements that compound.
+            Off-the-shelf tools where they work. Custom agents where they do not. Deployed into Finance, Sales, Ops, Legal, Marketing, and Product.
           </p>
         </div>
 

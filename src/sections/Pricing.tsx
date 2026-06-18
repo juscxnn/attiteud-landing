@@ -13,6 +13,7 @@ const includes = [
   "Custom agents & automations",
   "Unlimited access to our team",
   "Monthly performance review",
+  "Unsubscribe anytime after initial deployment",
 ];
 
 interface PricingProps {
@@ -86,7 +87,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             opacity: 0,
           }}
         >
-          A forward deployment studio for less than a senior hire.
+          A forward deployment studio for less than a senior hire. Unsubscribe anytime after the initial deployment phase — come back whenever you need us.
         </p>
 
         <div

@@ -14,6 +14,7 @@ import Approach from "./sections/Approach";
 import UseCases from "./sections/UseCases";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import SocialProof from "./sections/SocialProof";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,6 +64,7 @@ function App() {
         <Capabilities onScrollTo={handleScrollTo} />
         <Pricing onScrollTo={handleScrollTo} />
         <Research onScrollTo={handleScrollTo} />
+        <SocialProof onScrollTo={handleScrollTo} />
         <Approach onScrollTo={handleScrollTo} />
         <UseCases onScrollTo={handleScrollTo} />
         <Contact />
