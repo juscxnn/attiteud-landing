@@ -141,7 +141,7 @@ export default function Research({ onScrollTo }: ResearchProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("approach")} />
+      <SectionDivider onClick={() => onScrollTo("clients")} />
     </section>
   );
 }

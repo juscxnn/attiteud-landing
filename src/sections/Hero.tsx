@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLang } from "../hooks/useLang";
 import gsap from "gsap";
 import FlashingText from "../components/FlashingText";
+import SectionDivider from "../components/SectionDivider";
 
 interface HeroProps {
   onScrollTo: (id: string) => void;
@@ -162,7 +163,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           >
             {t("nav_cta")}
           </a>
-          <button
+            {t(
             onClick={() => onScrollTo("capabilities")}
             className="font-sans transition-all duration-300 w-full sm:w-auto"
             style={{
@@ -189,6 +190,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           </button>
         </div>
       </div>
+      <SectionDivider onClick={() => onScrollTo("capabilities")} />
     </section>
   );
 }

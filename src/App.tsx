@@ -25,7 +25,11 @@ function AppInner() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+    const lenis = new Lenis({
+      lerp: 0.12,
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+    });
     lenisRef.current = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
