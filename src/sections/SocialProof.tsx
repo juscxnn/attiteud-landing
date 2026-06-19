@@ -205,7 +205,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("approach")} />
+      <SectionDivider onClick={() => onScrollTo("capabilities")} />
     </section>
   );
 }

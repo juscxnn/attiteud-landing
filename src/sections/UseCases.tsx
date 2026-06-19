@@ -147,7 +147,7 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("contact")} />
+      <SectionDivider onClick={() => onScrollTo("research")} />
     </section>
   );
 }

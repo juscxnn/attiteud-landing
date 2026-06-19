@@ -18,19 +18,19 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     hero_asterisk: "✽",
-    hero_label: "Forward Deployment Studio",
+    hero_label: "AI Deployment Studio",
     hero_tagline: "AI Integration Studio",
-    hero_line1: "Sharpen your operations,",
-    hero_line2: "multiply your output",
-    hero_desc: "Most teams use AI at a fraction of its potential. We find the drag in your operations and implement the right AI tools directly into your systems.",
+    hero_line1: "Deploy AI.",
+    hero_line2: "Move faster.",
+    hero_desc: "Most teams use AI at 10% of its potential. We find the friction, build the agents, and deploy them directly into your stack.",
     hero_subtitle: "We build, deploy, and manage AI agents and automations so your team moves faster — without expanding headcount.",
     hero_cta: "Start with an audit",
     hero_explore: "Explore Capabilities",
 
     // Use Cases (WHERE WE HELP)
     usecases_label: "Where We Help",
-    usecases_heading: "Your team on autopilot",
-    usecases_subtitle: "Off-the-shelf tools where they work. Custom agents where they do not. Deployed into Finance, Sales, Ops, Legal, Marketing, and Product.",
+    usecases_heading: "Your team, amplified",
+    usecases_subtitle: "Off-the-shelf where it works. Custom agents where it does not. Deployed into BD, Sales, Ops, Marketing, and Product.",
     "uc_bd_pain": "An autonomous scheduling AI agent researches across regions, preps outreach, handles email responses, and drafts agreements. Your team sells instead of admin-ing.",
     "uc_sales_pain": "Reps lose hours to research and admin. AI handles prep work so they sell more and type less.",
     "uc_cs_pain": "A self-learning agent embeds with your team's knowledge, reduces tickets by 20%, and responds in under 5 minutes.",
@@ -50,8 +50,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "uc_product_tag": "Ship faster",
     "uc_product_name": "Product & Engineering",
 
-    research_stats_label: "The Market",
-    research_stats_heading: "The numbers speak",
+    research_stats_label: "The Numbers",
+    research_stats_heading: "Why this matters",
     stat_1_label: "Added to global GDP by 2030",
     stat_2_label: "Productivity uplift from AI teams",
     stat_3_label: "Of SMEs have no AI strategy",
@@ -74,9 +74,9 @@ const translations: Record<Lang, Record<string, string>> = {
     research_step3_text: "Clear priorities. Specific tools. Realistic timelines. We tell you exactly what to build, what to buy, and what to ignore.",
 
     // Social Proof
-    clients_label: "Who We Work With",
-    clients_heading: "Proof, not promises",
-    clients_subtitle: "Real deployments. Real results. Specific teams, specific wins.",
+    clients_label: "Clients",
+    clients_heading: "Real teams. Real results.",
+    clients_subtitle: "Specific teams. Specific wins. No fluff.",
     client_nichesim_story: "An autonomous scheduling AI agent conducted research across 14 regions, pulled accurate data into their CRM, prepped outreach, and handled email responses plus MSA/agreement drafting and review. Full end-to-end BD automation.",
     client_nichesim_outcome: ">8 hours saved per week. 3x BD productivity without expanding the team.",
     client_nichesim_name: "NicheSim",
@@ -96,8 +96,8 @@ const translations: Record<Lang, Record<string, string>> = {
     client_confidential_metrics: "20% fewer tickets,<5 min response,2x faster GTM",
 
     // Approach
-    approach_label: "Our Approach",
-    approach_heading: "How we work",
+    approach_label: "How We Work",
+    approach_heading: "Built. Deployed. Running.",
     approach_subtitle: "We do not sell hours. We sell outcomes. Every engagement is scoped, tracked, and measured against real business metrics.",
     approach_step1_label: "01",
     approach_step1_title: "Map",
@@ -113,8 +113,8 @@ const translations: Record<Lang, Record<string, string>> = {
     approach_step4_text: "We stay close, refine, and make sure your investment keeps compounding.",
 
     // Capabilities
-    capabilities_label: "What We Do",
-    capabilities_heading: "Find the drag. Remove it.",
+    capabilities_label: "What We Build",
+    capabilities_heading: "Find the friction. Remove it.",
     capabilities_subtitle: "Every tool is chosen for the problem. Nothing is built for the sake of building.",
     cap_1_title: "Workflow Audit",
     cap_1_desc: "We map where your teams lose time. The handoffs, the repetition, the work nobody talks about anymore.",
@@ -125,7 +125,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Pricing
     pricing_label: "Pricing",
-    pricing_heading: "One flat fee. Full access.",
+    pricing_heading: "One price. Full coverage.",
     pricing_subtitle: "A forward deployment studio for less than a senior hire. Unsubscribe anytime after the initial deployment phase — come back whenever you need us.",
     pricing_annual_heading: "$8,000 / month",
     pricing_annual_badge: "Annual",
@@ -146,9 +146,9 @@ const translations: Record<Lang, Record<string, string>> = {
     pricing_caveat: "Need something custom?",
 
     // Contact
-    contact_label: "Start Here",
-    contact_heading: "Ready to move forward?",
-    contact_subtitle: "Book a 30-minute call. We will diagnose your biggest AI opportunity.",
+    contact_label: "Contact",
+    contact_heading: "Ready when you are",
+    contact_subtitle: "No sales pitch. A 30-minute diagnostic. We tell you exactly what is worth building.",
     contact_email_label: "Email",
     contact_phone_label: "Phone",
     contact_form_name: "Name",
@@ -181,19 +181,19 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     hero_asterisk: "✽",
-    hero_label: "前沿部署工作室",
+    hero_label: "AI 部署工作室",
     hero_tagline: "AI 集成工作室",
-    hero_line1: "优化您的运营流程,",
-    hero_line2: "倍增您的产出",
-    hero_desc: "大多数团队只发挥了 AI 一小部分的潜力。我们找出运营中的阻力，并将正确的 AI 工具直接植入您的系统。",
+    hero_line1: "部署 AI。",
+    hero_line2: "加速运转。",
+    hero_desc: "大多数团队只用了 AI 10% 的潜力。我们找出摩擦点，构建智能体，直接部署到您的技术栈中。",
     hero_subtitle: "我们构建、部署和管理 AI 智能体与自动化，让您的团队无需扩编即可加速运转。",
     hero_cta: "开始审计",
     hero_explore: "探索能力",
 
     // Use Cases (WHERE WE HELP)
     usecases_label: "我们服务哪些领域",
-    usecases_heading: "让您的团队自动运转",
-    usecases_subtitle: "能用现有工具就用，不行就定制智能体。部署于财务、销售、运营、法务、营销和产品团队。",
+    usecases_heading: "团队能力倍增",
+    usecases_subtitle: "能用现成工具就用，不行就定制智能体。部署于商务拓展、销售、运营、营销和产品团队。",
     "uc_bd_pain": "自主调度 AI 智能体跨地区调研，准备推广方案，处理邮件回复并起草协议。您的团队专注销售，不用再做行政杂务。",
     "uc_sales_pain": "销售花大量时间在调研和行政上。AI 处理准备工作，让他们卖更多，打字更少。",
     "uc_cs_pain": "自学习智能体嵌入团队知识库，减少 20% 工单量，响应时间低于 5 分钟。",
@@ -213,8 +213,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "uc_product_tag": "更快交付",
     "uc_product_name": "产品与工程",
 
-    research_stats_label: "市场数据",
-    research_stats_heading: "数字会说话",
+    research_stats_label: "数据",
+    research_stats_heading: "为什么重要",
     stat_1_label: "到2030年将增加全球GDP",
     stat_2_label: "AI团队的生产力提升",
     stat_3_label: "的中小企业没有AI战略",
@@ -237,9 +237,9 @@ const translations: Record<Lang, Record<string, string>> = {
     research_step3_text: "清晰的优先级。具体的工具。可行的时间线。我们明确告诉您该自建什么、该采购什么、该忽略什么。",
 
     // Social Proof
-    clients_label: "合作伙伴",
-    clients_heading: "实力，不靠承诺",
-    clients_subtitle: "真实部署。真实成果。具体团队，具体突破。",
+    clients_label: "客户",
+    clients_heading: "真实团队。真实成果。",
+    clients_subtitle: "具体团队。具体突破。没有空话。",
     client_nichesim_story: "自主调度 AI 智能体跨 14 个地区进行调研，将精准数据拉入 CRM，准备推广方案，处理邮件回复并起草/审核 MSA 协议。端到端商务拓展全自动化。",
     client_nichesim_outcome: "每周节省 8 小时以上。商务拓展生产力提升 3 倍，无需扩编。",
     client_nichesim_name: "NicheSim",
@@ -259,7 +259,7 @@ const translations: Record<Lang, Record<string, string>> = {
     client_confidential_metrics: "工单减少20%,<5分钟响应,上市速度2倍",
 
     // Approach
-    approach_label: "我们的工作方式",
+    approach_label: "工作方式",
     approach_heading: "我们的工作方式",
     approach_subtitle: "我们不卖工时，我们卖结果。每项合作都有范围、追踪和基于真实业务指标的衡量。",
     approach_step1_label: "01",
@@ -276,8 +276,8 @@ const translations: Record<Lang, Record<string, string>> = {
     approach_step4_text: "我们保持紧密合作，持续优化，确保您的投资不断产生复利效应。",
 
     // Capabilities
-    capabilities_label: "我们的服务",
-    capabilities_heading: "找出阻力。消除它。",
+    capabilities_label: "我们构建什么",
+    capabilities_heading: "找出摩擦点。消除它。",
     capabilities_subtitle: "每个工具都为问题而生。不为构建而构建。",
     cap_1_title: "工作流审计",
     cap_1_desc: "我们梳理团队时间的流失点。交接环节、重复工作、那些没人再提起的事务。",
@@ -309,9 +309,9 @@ const translations: Record<Lang, Record<string, string>> = {
     pricing_caveat: "需要定制方案？",
 
     // Contact
-    contact_label: "从这里开始",
-    contact_heading: "准备向前迈进？",
-    contact_subtitle: "预约 30 分钟通话。我们将诊断您最大的 AI 机会。",
+    contact_label: "联系",
+    contact_heading: "随时恭候",
+    contact_subtitle: "没有推销。30 分钟诊断。我们直告诉您什么值得构建。",
     contact_email_label: "邮箱",
     contact_phone_label: "电话",
     contact_form_name: "姓名",
@@ -344,19 +344,19 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     hero_asterisk: "✽",
-    hero_label: "Studio de Déploiement Avancé",
+    hero_label: "Studio de Déploiement IA",
     hero_tagline: "Studio d'Intégration IA",
-    hero_line1: "Aiguisez vos opérations,",
-    hero_line2: "multipliez vos résultats",
-    hero_desc: "La plupart des équipes utilisent l'IA à une fraction de son potentiel. Nous identifions les freins dans vos opérations et intégrons les bons outils IA directement dans vos systèmes.",
+    hero_line1: "Déployez l'IA.",
+    hero_line2: "Accélérez.",
+    hero_desc: "La plupart des équipes utilisent l'IA à 10% de son potentiel. Nous identifions les frictions, construisons les agents et les déployons dans votre stack.",
     hero_subtitle: "Nous construisons, déployons et gérons des agents et automatisations IA pour accélérer votre équipe — sans embaucher.",
     hero_cta: "Commencer par un audit",
     hero_explore: "Explorer les Capacités",
 
     // Use Cases (WHERE WE HELP)
     usecases_label: "Où Nous Intervenons",
-    usecases_heading: "Votre équipe en pilote automatique",
-    usecases_subtitle: "Outils prêts à l'emploi quand ils fonctionnent. Agents sur mesure quand ils ne le font pas. Déployés dans la Finance, les Ventes, les Opérations, le Juridique, le Marketing et le Produit.",
+    usecases_heading: "Votre équipe, amplifiée",
+    usecases_subtitle: "Outils existants quand ça marche. Agents sur mesure quand ça ne marche pas. Déployés dans le BD, les Ventes, les Opérations, le Marketing et le Produit.",
     "uc_bd_pain": "Un agent IA autonome effectue des recherches dans plusieurs régions, prépare les campagnes, gère les réponses email et rédige les accords. Votre équipe vend au lieu de faire de l'administratif.",
     "uc_sales_pain": "Les commerciaux perdent des heures en recherche et administration. L'IA gère la préparation pour qu'ils vendent plus et tapent moins.",
     "uc_cs_pain": "Un agent auto-apprenant intègre les connaissances de votre équipe, réduit les tickets de 20% et répond en moins de 5 minutes.",
@@ -391,9 +391,9 @@ const translations: Record<Lang, Record<string, string>> = {
     research_step3_text: "Priorités claires. Outils spécifiques. Délais réalistes. Nous vous disons exactement quoi construire, quoi acheter et quoi ignorer.",
 
     // Social Proof
-    clients_label: "Nos Clients",
-    clients_heading: "Des preuves, pas des promesses",
-    clients_subtitle: "Déploiements réels. Résultats réels. Des équipes spécifiques, des victoires spécifiques.",
+    clients_label: "Clients",
+    clients_heading: "Équipes réelles. Résultats réels.",
+    clients_subtitle: "Équipes spécifiques. Victoires spécifiques. Pas de bla-bla.",
     client_nichesim_story: "Un agent IA autonome a effectué des recherches dans 14 régions, extrait des données précises dans le CRM, préparé les campagnes et géré les réponses email ainsi que la rédaction et révision des accords MSA. Automatisation BD de bout en bout.",
     client_nichesim_outcome: ">8 heures économisées par semaine. Productivité BD x3 sans embauche.",
     client_nichesim_name: "NicheSim",
@@ -430,8 +430,8 @@ const translations: Record<Lang, Record<string, string>> = {
     approach_step4_text: "Nous restons proches, affinons et assurons que votre investissement continue de se multiplier.",
 
     // Capabilities
-    capabilities_label: "Nos Services",
-    capabilities_heading: "Trouvez le frein. Éliminez-le.",
+    capabilities_label: "Ce Que Nous Construisons",
+    capabilities_heading: "Trouvez la friction. Éliminez-la.",
     capabilities_subtitle: "Chaque outil est choisi pour le problème. Rien n'est construit pour le plaisir de construire.",
     cap_1_title: "Audit de Flux",
     cap_1_desc: "Nous cartographions où vos équipes perdent du temps. Les transferts, la répétition, le travail dont plus personne ne parle.",
@@ -463,9 +463,9 @@ const translations: Record<Lang, Record<string, string>> = {
     pricing_caveat: "Besoin d'une solution personnalisée ?",
 
     // Contact
-    contact_label: "Start Here",
-    contact_heading: "Prêt à avancer ?",
-    contact_subtitle: "Réservez un appel de 30 minutes. Nous diagnostiquerons votre plus grande opportunité IA.",
+    contact_label: "Contact",
+    contact_heading: "Prêt quand vous l'êtes",
+    contact_subtitle: "Pas de vente. Un diagnostic de 30 minutes. Nous vous disons exactement ce qui vaut la peine d'être construit.",
     contact_email_label: "Email",
     contact_phone_label: "Téléphone",
     contact_form_name: "Nom",

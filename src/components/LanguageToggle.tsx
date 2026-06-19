@@ -1,56 +1,45 @@
 import { useLang } from "../hooks/useLang";
 
-const flags: Record<string, string> = {
-  en: "🇬🇧",
-  cn: "🇨🇳",
-  fr: "🇫🇷",
+const langOrder = ["en", "cn", "fr"] as const;
+const langLabels: Record<string, string> = {
+  en: "EN",
+  cn: "中",
+  fr: "FR",
 };
 
 export default function LanguageToggle() {
-  const { lang, setLang, t } = useLang();
-  const langs = ["en", "cn", "fr"] as const;
+  const { lang, setLang } = useLang();
+
+  const cycleLang = () => {
+    const currentIndex = langOrder.indexOf(lang);
+    const nextIndex = (currentIndex + 1) % langOrder.length;
+    setLang(langOrder[nextIndex]);
+  };
 
   return (
-    <div
+    <button
+      onClick={cycleLang}
       className="font-mono"
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 4,
+        background: "transparent",
+        color: "#7a746d",
+        border: "1px solid rgba(122, 118, 109, 0.2)",
+        padding: "4px 10px",
+        cursor: "pointer",
         fontSize: 11,
         letterSpacing: "0.06em",
+        transition: "all 0.2s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.color = "#e8e4dc";
+        e.currentTarget.style.borderColor = "rgba(232, 228, 220, 0.3)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.color = "#7a746d";
+        e.currentTarget.style.borderColor = "rgba(122, 118, 109, 0.2)";
       }}
     >
-      {langs.map((l) => (
-        <button
-          key={l}
-          onClick={() => setLang(l)}
-          style={{
-            background: lang === l ? "rgba(196, 92, 38, 0.15)" : "transparent",
-            color: lang === l ? "#c45c26" : "#7a746d",
-            border: "1px solid",
-            borderColor: lang === l ? "rgba(196, 92, 38, 0.3)" : "transparent",
-            padding: "4px 10px",
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            fontFamily: "inherit",
-            fontSize: "inherit",
-            letterSpacing: "inherit",
-          }}
-          onMouseEnter={(e) => {
-            if (lang !== l) {
-              e.currentTarget.style.color = "#e8e4dc";
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (lang !== l) {
-              e.currentTarget.style.color = "#7a746d";
-            }
-          }}
-        >
-          {flags[l]} {t(`lang_${l}`)}
-        </button>
-      ))}
-    </div>
+      {langLabels[lang]}
+    </button>
   );
 }

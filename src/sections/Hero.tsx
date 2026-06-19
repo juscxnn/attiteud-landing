@@ -190,7 +190,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           </button>
         </div>
       </div>
-      <SectionDivider onClick={() => onScrollTo("capabilities")} />
+      <SectionDivider onClick={() => onScrollTo("clients")} />
     </section>
   );
 }

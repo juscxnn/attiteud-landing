@@ -139,7 +139,7 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("pricing")} />
+      <SectionDivider onClick={() => onScrollTo("use-cases")} />
     </section>
   );
 }

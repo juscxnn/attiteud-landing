@@ -118,7 +118,7 @@ export default function Approach({ onScrollTo }: ApproachProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("use-cases")} />
+      <SectionDivider onClick={() => onScrollTo("pricing")} />
     </section>
   );
 }

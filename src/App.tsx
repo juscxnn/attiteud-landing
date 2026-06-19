@@ -66,12 +66,12 @@ function AppInner() {
       <Navigation onScrollTo={handleScrollTo} />
       <main>
         <Hero onScrollTo={handleScrollTo} loaded={loaded} />
-        <Capabilities onScrollTo={handleScrollTo} />
-        <Pricing onScrollTo={handleScrollTo} />
-        <Research onScrollTo={handleScrollTo} />
         <SocialProof onScrollTo={handleScrollTo} />
-        <Approach onScrollTo={handleScrollTo} />
+        <Capabilities onScrollTo={handleScrollTo} />
         <UseCases onScrollTo={handleScrollTo} />
+        <Research onScrollTo={handleScrollTo} />
+        <Approach onScrollTo={handleScrollTo} />
+        <Pricing onScrollTo={handleScrollTo} />
         <Contact />
         <Footer />
       </main>
