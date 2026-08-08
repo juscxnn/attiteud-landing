@@ -22,6 +22,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
   const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -40,7 +41,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
       if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
-    [bodyRef, statsRef, ctaRef].forEach((ref) => {
+    [logoRef, bodyRef, statsRef, ctaRef].forEach((ref) => {
       if (ref.current) {
         const trig = gsap.fromTo(ref.current,
           { opacity: 0, y: 24 },
@@ -69,13 +70,59 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
       }}
     >
       <div style={{ maxWidth: 960, margin: "0 auto", textAlign: "center" }}>
-        <div ref={headerRef} style={{ marginBottom: 40, opacity: 0 }}>
+        <div ref={headerRef} style={{ marginBottom: 36, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("partnership_label")}
           </span>
+
+          {/* Logo row */}
+          <div
+            ref={logoRef}
+            className="flex items-center justify-center"
+            style={{ gap: 16, marginBottom: 28, opacity: 0 }}
+          >
+            <span
+              style={{
+                fontFamily: "'Times New Roman', Times, serif",
+                fontSize: "clamp(22px, 3vw, 30px)",
+                color: "#e8e4dc",
+                letterSpacing: "0.02em",
+              }}
+            >
+              ✽Attiteud<span style={{ opacity: 0.5 }}>.</span>
+            </span>
+            <span
+              className="font-sans"
+              style={{
+                fontSize: "clamp(14px, 2vw, 20px)",
+                fontWeight: 400,
+                color: "#7a746d",
+                letterSpacing: "0.04em",
+              }}
+            >
+              ×
+            </span>
+            <a
+              href="https://humbldesign.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:scale-105"
+              style={{ display: "inline-flex", alignItems: "center" }}
+            >
+              <img
+                src="/humbl-logo-white.svg"
+                alt="Humbl Design"
+                style={{
+                  height: "clamp(20px, 2.5vw, 28px)",
+                  width: "auto",
+                }}
+              />
+            </a>
+          </div>
+
           <FlashingText
             text={t("partnership_heading")}
             flashColor="#c45c26"
@@ -111,7 +158,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               fontSize: 14,
               lineHeight: 1.65,
               color: "#7a746d",
-              maxWidth: "52ch",
+              maxWidth: "54ch",
               margin: "0 auto",
             }}
           >
@@ -144,7 +191,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               <div
                 className="font-sans"
                 style={{
-                  fontSize: "clamp(16px, 1.8vw, 20px)",
+                  fontSize: "clamp(16px, 1.8vw, 22px)",
                   fontWeight: 400,
                   color: "#e8a87c",
                   marginBottom: 8,

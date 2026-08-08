@@ -16,6 +16,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
   const line2 = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const partnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!loaded) return;
@@ -24,7 +25,8 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
       .to(line1.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.4")
       .to(line2.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.95")
       .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.9 }, "-=0.7")
-      .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5");
+      .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5")
+      .to(partnerRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3");
     return () => { tl.kill(); };
   }, [loaded]);
 
@@ -188,6 +190,47 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           >
             {t("hero_explore")}
           </button>
+        </div>
+
+        {/* Partnership badge */}
+        <div
+          ref={partnerRef}
+          className="flex flex-col items-center"
+          style={{
+            marginTop: "clamp(32px, 5vh, 56px)",
+            opacity: 0,
+            transform: "translateY(8px)",
+          }}
+        >
+          <span
+            className="font-mono uppercase"
+            style={{
+              fontSize: 10,
+              letterSpacing: "0.14em",
+              color: "#6b6560",
+              marginBottom: 12,
+            }}
+          >
+            in partnership with
+          </span>
+          <a
+            href="https://humbldesign.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:scale-105"
+            style={{ display: "inline-block" }}
+          >
+            <img
+              src="/humbl-logo-white.svg"
+              alt="Humbl Design"
+              style={{
+                height: 18,
+                width: "auto",
+                filter: "invert(0) brightness(0.3)",
+                opacity: 0.7,
+              }}
+            />
+          </a>
         </div>
       </div>
       <SectionDivider onClick={() => onScrollTo("clients")} />
