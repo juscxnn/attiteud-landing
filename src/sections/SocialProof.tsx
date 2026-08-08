@@ -7,38 +7,42 @@ import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const clientKeys = [
+const projects = [
   {
     id: "nichesim",
+    url: "https://nichesim.com",
     nameKey: "client_nichesim_name",
     tagKey: "client_nichesim_tag",
-    storyKey: "client_nichesim_story",
-    metricsKey: "client_nichesim_metrics",
-    accent: "rgba(196, 92, 38, 0.08)",
+    onelinerKey: "client_nichesim_oneliner",
+    bgAccent: "rgba(196, 92, 38, 0.05)",
+    borderAccent: "rgba(196, 92, 38, 0.15)",
   },
   {
     id: "copyscouts",
+    url: "#",
     nameKey: "client_copyscouts_name",
     tagKey: "client_copyscouts_tag",
-    storyKey: "client_copyscouts_story",
-    metricsKey: "client_copyscouts_metrics",
-    accent: "rgba(122, 158, 126, 0.08)",
+    onelinerKey: "client_copyscouts_oneliner",
+    bgAccent: "rgba(122, 158, 126, 0.05)",
+    borderAccent: "rgba(122, 158, 126, 0.15)",
   },
   {
     id: "podletter",
+    url: "#",
     nameKey: "client_podletter_name",
     tagKey: "client_podletter_tag",
-    storyKey: "client_podletter_story",
-    metricsKey: "client_podletter_metrics",
-    accent: "rgba(232, 168, 124, 0.08)",
+    onelinerKey: "client_podletter_oneliner",
+    bgAccent: "rgba(232, 168, 124, 0.05)",
+    borderAccent: "rgba(232, 168, 124, 0.15)",
   },
   {
     id: "gatekeep",
+    url: "https://gatekeep.vc",
     nameKey: "client_gatekeep_name",
     tagKey: "client_gatekeep_tag",
-    storyKey: "client_gatekeep_story",
-    metricsKey: "client_gatekeep_metrics",
-    accent: "rgba(196, 92, 38, 0.08)",
+    onelinerKey: "client_gatekeep_oneliner",
+    bgAccent: "rgba(196, 92, 38, 0.05)",
+    borderAccent: "rgba(196, 92, 38, 0.15)",
   },
 ];
 
@@ -50,7 +54,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
   const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
@@ -70,8 +74,8 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
       const trig = gsap.fromTo(card,
         { opacity: 0, y: 40 },
         {
-          opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: i * 0.12,
-          scrollTrigger: { trigger: card, start: "top 88%", toggleActions: "play none none none" },
+          opacity: 1, y: 0, duration: 0.7, ease: "power3.out", delay: 0.1 + i * 0.08,
+          scrollTrigger: { trigger: sectionRef.current, start: "top 82%", toggleActions: "play none none none" },
         }
       );
       if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
@@ -92,8 +96,8 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
         backgroundColor: "rgba(8, 8, 8, 0.78)",
       }}
     >
-      <div style={{ maxWidth: 960, margin: "0 auto" }}>
-        <div ref={headerRef} style={{ textAlign: "center", marginBottom: 56, opacity: 0 }}>
+      <div style={{ maxWidth: 800, margin: "0 auto" }}>
+        <div ref={headerRef} style={{ textAlign: "center", marginBottom: 48, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
             style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
@@ -118,108 +122,82 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
             className="font-sans"
             style={{
               fontSize: 14,
-              lineHeight: 1.6,
+              lineHeight: 1.65,
               color: "#7a746d",
-              maxWidth: "42ch",
-              margin: "12px auto 0",
+              maxWidth: "48ch",
+              margin: "14px auto 0",
             }}
           >
-            {t("clients_subtitle")}
+            {t("clients_narrative")}
           </p>
         </div>
 
-        <div className="flex flex-col" style={{ gap: 0 }}>
-          {clientKeys.map((client, i) => (
-            <div
-              key={client.id}
+        <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "clamp(8px, 1vw, 12px)" }}>
+          {projects.map((project, i) => (
+            <a
+              key={project.id}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
-                borderTop: "1px solid rgba(232, 228, 220, 0.06)",
-                padding: "clamp(32px, 4vh, 48px) 0",
+                display: "block",
+                padding: "clamp(18px, 2.5vh, 24px) clamp(16px, 2vw, 20px)",
+                border: "1px solid rgba(232, 228, 220, 0.06)",
+                textDecoration: "none",
                 opacity: 0,
-                transition: "background-color 0.5s ease, border-color 0.5s ease",
-                marginLeft: "-8px",
-                marginRight: "-8px",
-                paddingLeft: "8px",
-                paddingRight: "8px",
+                transition: "border-color 0.4s ease, background-color 0.4s ease, transform 0.3s ease",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = e.currentTarget.style.backgroundColor || client.accent;
+                e.currentTarget.style.borderColor = project.borderAccent;
+                e.currentTarget.style.backgroundColor = project.bgAccent;
+                e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(232, 228, 220, 0.06)";
                 e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: 24 }}>
-                <div className="flex-shrink-0" style={{ width: 140, minHeight: 40 }}>
-                  <span
-                    className="font-mono"
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 400,
-                      color: "#e8e4dc",
-                      letterSpacing: "0.02em",
-                      opacity: 0.7,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    {t(client.nameKey)}
-                  </span>
-                </div>
-
-                <div style={{ flex: 1 }}>
-                  <div className="flex items-baseline flex-wrap" style={{ gap: 12, marginBottom: 10 }}>
-                    <FlashingText
-                      text={t(client.nameKey)}
-                      flashColor="#c45c26"
-                      baseColor="#e8e4dc"
-                      as="h3"
-                      style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.3, color: "#e8e4dc" }}
-                    />
-                    <span
-                      className="font-mono"
-                      style={{
-                        fontSize: 10,
-                        letterSpacing: "0.06em",
-                        color: "#7a9e7e",
-                        textTransform: "uppercase",
-                        border: "1px solid rgba(122, 158, 126, 0.2)",
-                        padding: "2px 8px",
-                      }}
-                    >
-                      {t(client.tagKey)}
-                    </span>
-                  </div>
-
-                  <p
-                    className="font-sans"
-                    style={{ fontSize: 13, lineHeight: 1.55, color: "#7a746d", maxWidth: "50ch", marginBottom: 14 }}
-                  >
-                    {t(client.storyKey)}
-                  </p>
-
-                  <div className="flex flex-wrap" style={{ gap: 8 }}>
-                    {t(client.metricsKey).split(",").map((metric) => (
-                      <span
-                        key={metric.trim()}
-                        className="font-mono"
-                        style={{
-                          fontSize: 10,
-                          letterSpacing: "0.06em",
-                          color: "#e8a87c",
-                          textTransform: "uppercase",
-                          border: "1px solid rgba(232, 168, 124, 0.2)",
-                          padding: "4px 10px",
-                          transition: "border-color 0.3s ease, color 0.3s ease",
-                        }}
-                      >
-                        {metric.trim()}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
+                <span
+                  className="font-mono"
+                  style={{
+                    fontSize: 13,
+                    color: "#e8e4dc",
+                    letterSpacing: "0.02em",
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  {t(project.nameKey)}
+                </span>
+                <span
+                  className="font-mono"
+                  style={{
+                    fontSize: 9,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: project.id === "copyscouts" || project.id === "podletter" ? "#7a9e7e" : "#e8a87c",
+                    border: `1px solid ${project.id === "copyscouts" || project.id === "podletter" ? "rgba(122, 158, 126, 0.25)" : "rgba(232, 168, 124, 0.25)"}`,
+                    padding: "2px 8px",
+                  }}
+                >
+                  {t(project.tagKey)}
+                </span>
               </div>
-            </div>
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: 12,
+                  lineHeight: 1.5,
+                  color: "#7a746d",
+                  maxWidth: "32ch",
+                }}
+              >
+                {t(project.onelinerKey)}
+              </p>
+            </a>
           ))}
         </div>
       </div>
