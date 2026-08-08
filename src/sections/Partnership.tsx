@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLang } from "../hooks/useLang";
-import FlashingText from "../components/FlashingText";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -123,20 +122,6 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
             </a>
           </div>
 
-          <FlashingText
-            text={t("partnership_heading")}
-            flashColor="#c45c26"
-            baseColor="#e8e4dc"
-            as="h2"
-            style={{
-              fontSize: "clamp(24px, 3vw, 38px)",
-              fontWeight: 400,
-              lineHeight: 1.15,
-              letterSpacing: "-0.025em",
-              color: "#e8e4dc",
-              margin: "0 auto",
-            }}
-          />
           <p
             className="font-sans"
             style={{

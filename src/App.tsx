@@ -13,6 +13,7 @@ import SocialProof from "./sections/SocialProof";
 import Partnership from "./sections/Partnership";
 import Capabilities from "./sections/Capabilities";
 import UseCases from "./sections/UseCases";
+import TechMarquee from "./components/TechMarquee";
 import Research from "./sections/Research";
 import Approach from "./sections/Approach";
 import Pricing from "./sections/Pricing";
@@ -72,6 +73,7 @@ function AppInner() {
         <Partnership onScrollTo={handleScrollTo} />
         <Capabilities onScrollTo={handleScrollTo} />
         <UseCases onScrollTo={handleScrollTo} />
+        <TechMarquee />
         <Research onScrollTo={handleScrollTo} />
         <Approach onScrollTo={handleScrollTo} />
         <Pricing onScrollTo={handleScrollTo} />
