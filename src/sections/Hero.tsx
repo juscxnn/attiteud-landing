@@ -11,22 +11,20 @@ interface HeroProps {
 
 export default function Hero({ onScrollTo, loaded }: HeroProps) {
   const { t } = useLang();
-  const labelRef = useRef<HTMLSpanElement>(null);
+  const brandRef = useRef<HTMLDivElement>(null);
   const line1 = useRef<HTMLDivElement>(null);
   const line2 = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const partnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!loaded) return;
     const tl = gsap.timeline({ delay: 0.2, defaults: { ease: "power3.out" } });
-    tl.to(labelRef.current, { opacity: 1, y: 0, duration: 0.8 })
-      .to(line1.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.4")
+    tl.to(brandRef.current, { opacity: 1, y: 0, duration: 0.8 })
+      .to(line1.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.3")
       .to(line2.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.95")
       .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.9 }, "-=0.7")
-      .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5")
-      .to(partnerRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.3");
+      .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8 }, "-=0.5");
     return () => { tl.kill(); };
   }, [loaded]);
 
@@ -50,20 +48,64 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           maxWidth: "100%",
         }}
       >
-        <span
-          ref={labelRef}
-          className="font-mono uppercase"
+        {/* Brand: ✽Attiteud. × Humbl Design */}
+        <div
+          ref={brandRef}
+          className="flex items-center justify-center flex-wrap"
           style={{
-            fontSize: "clamp(9px, 1.2vw, 11px)",
-            letterSpacing: "0.18em",
-            color: "#c45c26",
-            marginBottom: "clamp(16px, 3vw, 32px)",
+            gap: "clamp(8px, 1.5vw, 16px)",
+            marginBottom: "clamp(32px, 5vh, 56px)",
             opacity: 0,
             transform: "translateY(12px)",
           }}
         >
-          {t("hero_label")}
-        </span>
+          <span
+            style={{
+              fontFamily: "'Times New Roman', Times, serif",
+              fontSize: "clamp(24px, 4vw, 48px)",
+              lineHeight: 1,
+              color: "#1e1c18",
+              display: "flex",
+              alignItems: "center",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span style={{ fontSize: "1.1em", marginRight: 2 }}>✽</span>
+            <span>Attiteud</span>
+            <span style={{ opacity: 0.5 }}>.</span>
+          </span>
+          <span
+            className="font-sans"
+            style={{
+              fontSize: "clamp(16px, 2.5vw, 28px)",
+              fontWeight: 300,
+              color: "#6b6560",
+              lineHeight: 1,
+            }}
+          >
+            ×
+          </span>
+          <a
+            href="https://humbldesign.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:scale-105"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src="/humbl-logo-white.svg"
+              alt="Humbl Design"
+              style={{
+                height: "clamp(22px, 3.5vw, 42px)",
+                width: "auto",
+                filter: "brightness(0.12)",
+              }}
+            />
+          </a>
+        </div>
 
         <h1 className="font-sans" style={{ marginBottom: "clamp(16px, 3vw, 32px)", width: "100%" }}>
           <div
@@ -190,47 +232,6 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           >
             {t("hero_explore")}
           </button>
-        </div>
-
-        {/* Partnership badge */}
-        <div
-          ref={partnerRef}
-          className="flex flex-col items-center"
-          style={{
-            marginTop: "clamp(32px, 5vh, 56px)",
-            opacity: 0,
-            transform: "translateY(8px)",
-          }}
-        >
-          <span
-            className="font-mono uppercase"
-            style={{
-              fontSize: 10,
-              letterSpacing: "0.14em",
-              color: "#6b6560",
-              marginBottom: 12,
-            }}
-          >
-            in partnership with
-          </span>
-          <a
-            href="https://humbldesign.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-transform duration-300 hover:scale-105"
-            style={{ display: "inline-block" }}
-          >
-            <img
-              src="/humbl-logo-white.svg"
-              alt="Humbl Design"
-              style={{
-                height: 18,
-                width: "auto",
-                filter: "invert(0) brightness(0.3)",
-                opacity: 0.7,
-              }}
-            />
-          </a>
         </div>
       </div>
       <SectionDivider onClick={() => onScrollTo("clients")} />
