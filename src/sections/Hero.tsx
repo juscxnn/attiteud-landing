@@ -75,12 +75,14 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             <span style={{ opacity: 0.5 }}>.</span>
           </span>
           <span
-            className="font-sans"
             style={{
-              fontSize: "clamp(16px, 2.5vw, 28px)",
+              fontFamily: "'Times New Roman', Times, serif",
+              fontSize: "clamp(24px, 4vw, 48px)",
               fontWeight: 300,
               color: "#6b6560",
               lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             ×
@@ -99,9 +101,10 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
               src="/humbl-logo-white.svg"
               alt="Humbl Design"
               style={{
-                height: "clamp(22px, 3.5vw, 42px)",
+                height: "clamp(26px, 4.5vw, 50px)",
                 width: "auto",
                 filter: "brightness(0.12)",
+                display: "block",
               }}
             />
           </a>

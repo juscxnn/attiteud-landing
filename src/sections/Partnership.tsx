@@ -94,12 +94,14 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               ✽Attiteud<span style={{ opacity: 0.5 }}>.</span>
             </span>
             <span
-              className="font-sans"
               style={{
-                fontSize: "clamp(14px, 2vw, 20px)",
-                fontWeight: 400,
+                fontFamily: "'Times New Roman', Times, serif",
+                fontSize: "clamp(22px, 3vw, 30px)",
+                fontWeight: 300,
                 color: "#7a746d",
-                letterSpacing: "0.04em",
+                lineHeight: 1,
+                display: "flex",
+                alignItems: "center",
               }}
             >
               ×
@@ -115,8 +117,9 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
                 src="/humbl-logo-white.svg"
                 alt="Humbl Design"
                 style={{
-                  height: "clamp(20px, 2.5vw, 28px)",
+                  height: "clamp(24px, 3.5vw, 34px)",
                   width: "auto",
+                  display: "block",
                 }}
               />
             </a>
