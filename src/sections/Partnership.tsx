@@ -111,7 +111,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:scale-105"
-              style={{ display: "inline-flex", alignItems: "center" }}
+              style={{ display: "inline-flex", alignItems: "center", position: "relative", top: "clamp(1px, 0.2vw, 2px)" }}
             >
               <img
                 src="/humbl-logo-white.svg"

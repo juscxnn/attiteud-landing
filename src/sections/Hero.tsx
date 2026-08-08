@@ -95,6 +95,8 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             style={{
               display: "inline-flex",
               alignItems: "center",
+              position: "relative",
+              top: "clamp(1px, 0.2vw, 3px)",
             }}
           >
             <img
