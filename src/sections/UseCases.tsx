@@ -30,28 +30,28 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
     const triggers: ScrollTrigger[] = [];
 
     if (headerRef.current) {
-      const t = gsap.fromTo(headerRef.current,
+      const trig = gsap.fromTo(headerRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: headerRef.current, start: "top 85%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
     cardsRef.current.filter(Boolean).forEach((card, i) => {
-      const t = gsap.fromTo(card,
+      const trig = gsap.fromTo(card,
         { opacity: 0, y: 40 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: i * 0.06,
           scrollTrigger: { trigger: card, start: "top 90%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (

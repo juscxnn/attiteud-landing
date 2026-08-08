@@ -10,27 +10,31 @@ gsap.registerPlugin(ScrollTrigger);
 const clientKeys = [
   {
     id: "nichesim",
-    logo: "/nichesim-logo.png",
     nameKey: "client_nichesim_name",
     tagKey: "client_nichesim_tag",
     storyKey: "client_nichesim_story",
     metricsKey: "client_nichesim_metrics",
   },
   {
-    id: "gaib",
-    logo: "/gaib-logo.png",
-    nameKey: "client_gaib_name",
-    tagKey: "client_gaib_tag",
-    storyKey: "client_gaib_story",
-    metricsKey: "client_gaib_metrics",
+    id: "copyscouts",
+    nameKey: "client_copyscouts_name",
+    tagKey: "client_copyscouts_tag",
+    storyKey: "client_copyscouts_story",
+    metricsKey: "client_copyscouts_metrics",
   },
   {
-    id: "confidential",
-    logo: null,
-    nameKey: "client_confidential_name",
-    tagKey: "client_confidential_tag",
-    storyKey: "client_confidential_story",
-    metricsKey: "client_confidential_metrics",
+    id: "podletter",
+    nameKey: "client_podletter_name",
+    tagKey: "client_podletter_tag",
+    storyKey: "client_podletter_story",
+    metricsKey: "client_podletter_metrics",
+  },
+  {
+    id: "gatekeep",
+    nameKey: "client_gatekeep_name",
+    tagKey: "client_gatekeep_tag",
+    storyKey: "client_gatekeep_story",
+    metricsKey: "client_gatekeep_metrics",
   },
 ];
 
@@ -48,28 +52,28 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
     const triggers: ScrollTrigger[] = [];
 
     if (headerRef.current) {
-      const t = gsap.fromTo(headerRef.current,
+      const trig = gsap.fromTo(headerRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: headerRef.current, start: "top 85%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
     cardsRef.current.filter(Boolean).forEach((card, i) => {
-      const t = gsap.fromTo(card,
+      const trig = gsap.fromTo(card,
         { opacity: 0, y: 40 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: i * 0.12,
           scrollTrigger: { trigger: card, start: "top 88%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (
@@ -132,30 +136,15 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: 24 }}>
-                {/* Logo / name area */}
                 <div className="flex-shrink-0" style={{ width: 140, minHeight: 40 }}>
-                  {client.logo ? (
-                    <img
-                      src={client.logo}
-                      alt={t(client.nameKey)}
-                      style={{
-                        maxWidth: "100%",
-                        maxHeight: 40,
-                        objectFit: "contain",
-                        filter: client.id === "nichesim" ? "invert(1)" : "none",
-                      }}
-                    />
-                  ) : (
-                    <span
-                      className="font-sans"
-                      style={{ fontSize: 14, fontWeight: 500, color: "#e8e4dc", letterSpacing: "0.01em" }}
-                    >
-                      {t(client.nameKey)}
-                    </span>
-                  )}
+                  <span
+                    className="font-mono"
+                    style={{ fontSize: 13, fontWeight: 400, color: "#e8e4dc", letterSpacing: "0.02em" }}
+                  >
+                    {t(client.nameKey)}
+                  </span>
                 </div>
 
-                {/* Content */}
                 <div style={{ flex: 1 }}>
                   <div className="flex items-baseline flex-wrap" style={{ gap: 12, marginBottom: 10 }}>
                     <FlashingText
@@ -205,7 +194,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("capabilities")} />
+      <SectionDivider onClick={() => onScrollTo("partnership")} />
     </section>
   );
 }

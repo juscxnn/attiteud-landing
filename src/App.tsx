@@ -4,18 +4,20 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { LangProvider } from "./hooks/useLang";
+import LanguageRouter from "./components/LanguageRouter";
 import AsciiCanvas from "./components/AsciiCanvas";
 import LoadingScreen from "./components/LoadingScreen";
 import Navigation from "./sections/Navigation";
 import Hero from "./sections/Hero";
+import SocialProof from "./sections/SocialProof";
+import Partnership from "./sections/Partnership";
 import Capabilities from "./sections/Capabilities";
-import Pricing from "./sections/Pricing";
+import UseCases from "./sections/UseCases";
 import Research from "./sections/Research";
 import Approach from "./sections/Approach";
-import UseCases from "./sections/UseCases";
+import Pricing from "./sections/Pricing";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
-import SocialProof from "./sections/SocialProof";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,7 +36,6 @@ function AppInner() {
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
 
-    // Stop scroll during loading
     lenis.stop();
 
     return () => { lenis.destroy(); };
@@ -61,12 +62,14 @@ function AppInner() {
 
   return (
     <>
+      <LanguageRouter />
       <LoadingScreen onComplete={handleLoadComplete} />
       <AsciiCanvas />
       <Navigation onScrollTo={handleScrollTo} />
       <main>
         <Hero onScrollTo={handleScrollTo} loaded={loaded} />
         <SocialProof onScrollTo={handleScrollTo} />
+        <Partnership onScrollTo={handleScrollTo} />
         <Capabilities onScrollTo={handleScrollTo} />
         <UseCases onScrollTo={handleScrollTo} />
         <Research onScrollTo={handleScrollTo} />

@@ -32,17 +32,17 @@ export default function Pricing({ onScrollTo }: PricingProps) {
     const triggers: ScrollTrigger[] = [];
 
     children.forEach((child, i) => {
-      const t = gsap.fromTo(child,
+      const trig = gsap.fromTo(child,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: i * 0.1,
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (
@@ -84,7 +84,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             fontSize: 14,
             lineHeight: 1.6,
             color: "#6b6560",
-            maxWidth: "40ch",
+            maxWidth: "42ch",
             margin: "0 auto 36px",
             opacity: 0,
           }}
@@ -111,7 +111,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
                 color: "#1e1c18",
               }}
             >
-              $8,000
+              $10,000
             </span>
             <span
               className="font-sans"
@@ -125,7 +125,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             className="flex flex-col items-start"
             style={{
               gap: 10,
-              maxWidth: 340,
+              maxWidth: 360,
               margin: "0 auto 32px",
               textAlign: "left",
             }}

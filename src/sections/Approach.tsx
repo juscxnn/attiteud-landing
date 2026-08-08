@@ -28,28 +28,28 @@ export default function Approach({ onScrollTo }: ApproachProps) {
     const triggers: ScrollTrigger[] = [];
 
     if (headerRef.current) {
-      const t = gsap.fromTo(headerRef.current,
+      const trig = gsap.fromTo(headerRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
     stepsRef.current.filter(Boolean).forEach((step) => {
-      const t = gsap.fromTo(step,
+      const trig = gsap.fromTo(step,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
           scrollTrigger: { trigger: step, start: "top 87%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (

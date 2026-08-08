@@ -18,25 +18,25 @@ export default function Contact() {
     const triggers: ScrollTrigger[] = [];
 
     children.forEach((child, i) => {
-      const t = gsap.fromTo(child,
+      const trig = gsap.fromTo(child,
         { opacity: 0, y: 24 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: i * 0.1,
           scrollTrigger: { trigger: sectionRef.current, start: "top 80%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
     if (calRef.current) {
-      const t = gsap.fromTo(calRef.current,
+      const trig = gsap.fromTo(calRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: 0.3,
           scrollTrigger: { trigger: calRef.current, start: "top 85%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
     const existingScript = document.getElementById("tidycal-embed-script");
@@ -48,7 +48,7 @@ export default function Contact() {
       document.body.appendChild(script);
     }
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (

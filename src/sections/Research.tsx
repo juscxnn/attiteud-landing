@@ -8,12 +8,12 @@ import SectionDivider from "../components/SectionDivider";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { figure: "$15.7T", labelKey: "stat_1_label", source: "McKinsey" },
-  { figure: "~40%", labelKey: "stat_2_label", source: "Accenture" },
-  { figure: "74%", labelKey: "stat_3_label", source: "Gartner" },
-  { figure: "~30%", labelKey: "stat_4_label", source: "Deloitte" },
-  { figure: "70%", labelKey: "stat_5_label", source: "McKinsey" },
-  { figure: "18mo", labelKey: "stat_6_label", source: "PwC" },
+  { figure: "90%", labelKey: "stat_1_label", source: "CB Insights" },
+  { figure: "42%", labelKey: "stat_2_label", source: "CB Insights" },
+  { figure: "228%", labelKey: "stat_3_label", source: "DMI" },
+  { figure: "3-6mo", labelKey: "stat_4_label", source: "Industry avg" },
+  { figure: "2-4wks", labelKey: "stat_5_label", source: "With Attiteud" },
+  { figure: "$30K+", labelKey: "stat_6_label", source: "Agency avg" },
 ];
 
 interface ResearchProps {
@@ -30,28 +30,28 @@ export default function Research({ onScrollTo }: ResearchProps) {
     const triggers: ScrollTrigger[] = [];
 
     if (headerRef.current) {
-      const t = gsap.fromTo(headerRef.current,
+      const trig = gsap.fromTo(headerRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: headerRef.current, start: "top 85%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     }
 
     cardsRef.current.filter(Boolean).forEach((card, i) => {
-      const t = gsap.fromTo(card,
+      const trig = gsap.fromTo(card,
         { opacity: 0, y: 40 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: i * 0.06,
           scrollTrigger: { trigger: card, start: "top 90%", toggleActions: "play none none none" },
         }
       );
-      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+      if (trig.scrollTrigger) triggers.push(trig.scrollTrigger);
     });
 
-    return () => { triggers.forEach((t) => t.kill()); };
+    return () => { triggers.forEach((trig) => trig.kill()); };
   }, []);
 
   return (
@@ -141,7 +141,7 @@ export default function Research({ onScrollTo }: ResearchProps) {
         </div>
       </div>
 
-      <SectionDivider onClick={() => onScrollTo("clients")} />
+      <SectionDivider onClick={() => onScrollTo("approach")} />
     </section>
   );
 }

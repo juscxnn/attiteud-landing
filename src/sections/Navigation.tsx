@@ -36,7 +36,7 @@ export default function Navigation({ onScrollTo }: NavigationProps) {
   }, []);
 
   const links = [
-    { label: t("nav_work"), id: "capabilities" },
+    { label: t("nav_work"), id: "clients" },
     { label: t("nav_contact"), id: "contact" },
   ];
 

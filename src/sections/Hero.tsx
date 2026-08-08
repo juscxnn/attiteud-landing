@@ -126,7 +126,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             lineHeight: 1.55,
             letterSpacing: "0.01em",
             color: "#6b6560",
-            maxWidth: "46ch",
+            maxWidth: "48ch",
             marginBottom: "clamp(24px, 3vw, 40px)",
             opacity: 0,
             transform: "translateY(16px)",
@@ -164,7 +164,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
             {t("nav_cta")}
           </a>
           <button
-            onClick={() => onScrollTo("capabilities")}
+            onClick={() => onScrollTo("clients")}
             className="font-sans transition-all duration-300 w-full sm:w-auto"
             style={{
               padding: "14px 32px",
