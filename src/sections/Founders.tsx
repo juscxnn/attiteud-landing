@@ -155,38 +155,27 @@ export default function Founders() {
               opacity: 0,
             }}
           >
-            <a
-              href="https://humbldesign.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
+            <div
+              style={{
+                width: "clamp(100px, 14vw, 140px)",
+                height: "clamp(100px, 14vw, 140px)",
+                borderRadius: "50%",
+                overflow: "hidden",
+                margin: "0 auto 20px",
+                border: "2px solid rgba(232, 228, 220, 0.08)",
+              }}
             >
-              <div
+              <img
+                src="/david-pokorny.png"
+                alt="David Pokorny"
                 style={{
-                  width: "clamp(100px, 14vw, 140px)",
-                  height: "clamp(100px, 14vw, 140px)",
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  margin: "0 auto 20px",
-                  border: "2px solid rgba(232, 228, 220, 0.08)",
-                  transition: "border-color 0.3s ease",
-                  cursor: "pointer",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  filter: "grayscale(30%)",
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(196, 92, 38, 0.4)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(232, 228, 220, 0.08)"; }}
-              >
-                <img
-                  src="/david-pokorny.png"
-                  alt="David Pokorny"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    filter: "grayscale(30%)",
-                  }}
-                />
-              </div>
-            </a>
+              />
+            </div>
             <h3
               className="font-sans"
               style={{
@@ -222,31 +211,6 @@ export default function Founders() {
             >
               {t("founders_david_bio")}
             </p>
-            <a
-              href="https://humbldesign.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono transition-all duration-300 inline-block"
-              style={{
-                fontSize: 11,
-                letterSpacing: "0.06em",
-                color: "#7a746d",
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(122, 116, 109, 0.2)",
-                marginTop: 12,
-                paddingBottom: 2,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#e8e4dc";
-                e.currentTarget.style.borderBottomColor = "rgba(232, 228, 220, 0.3)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#7a746d";
-                e.currentTarget.style.borderBottomColor = "rgba(122, 116, 109, 0.2)";
-              }}
-            >
-              {t("founders_humbl_link")}
-            </a>
           </div>
         </div>
       </div>
