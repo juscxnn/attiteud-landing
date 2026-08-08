@@ -118,18 +118,6 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
               margin: "0 auto",
             }}
           />
-          <p
-            className="font-sans"
-            style={{
-              fontSize: 14,
-              lineHeight: 1.65,
-              color: "#7a746d",
-              maxWidth: "48ch",
-              margin: "14px auto 0",
-            }}
-          >
-            {t("clients_narrative")}
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "clamp(8px, 1vw, 12px)" }}>

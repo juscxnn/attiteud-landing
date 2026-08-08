@@ -18,6 +18,7 @@ import Research from "./sections/Research";
 import Approach from "./sections/Approach";
 import Pricing from "./sections/Pricing";
 import Contact from "./sections/Contact";
+import Founders from "./sections/Founders";
 import Footer from "./sections/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -78,6 +79,7 @@ function AppInner() {
         <Approach onScrollTo={handleScrollTo} />
         <Pricing onScrollTo={handleScrollTo} />
         <Contact />
+        <Founders />
         <Footer />
       </main>
     </>
