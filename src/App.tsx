@@ -78,8 +78,8 @@ function AppInner() {
         <Research onScrollTo={handleScrollTo} />
         <Approach onScrollTo={handleScrollTo} />
         <Pricing onScrollTo={handleScrollTo} />
-        <Contact />
         <Founders />
+        <Contact />
         <Footer />
       </main>
     </>
