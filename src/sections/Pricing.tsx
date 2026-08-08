@@ -85,7 +85,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             lineHeight: 1.6,
             color: "#6b6560",
             maxWidth: "42ch",
-            margin: "0 auto 36px",
+            margin: "0 auto 40px",
             opacity: 0,
           }}
         >
@@ -94,20 +94,43 @@ export default function Pricing({ onScrollTo }: PricingProps) {
 
         <div
           style={{
-            border: "1px solid rgba(30, 28, 24, 0.1)",
-            padding: "clamp(28px, 4vw, 40px) clamp(20px, 3vw, 32px)",
+            border: "1px solid rgba(30, 28, 24, 0.08)",
+            padding: "clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px)",
             marginBottom: 48,
             opacity: 0,
+            position: "relative",
+            overflow: "hidden",
+            background: "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)",
+            transition: "border-color 0.5s ease, box-shadow 0.5s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "rgba(196, 92, 38, 0.2)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "rgba(30, 28, 24, 0.08)";
           }}
         >
-          <div style={{ marginBottom: 28 }}>
+          {/* Subtle glow */}
+          <div
+            style={{
+              position: "absolute",
+              top: "-50%",
+              left: "-50%",
+              width: "200%",
+              height: "200%",
+              background: "radial-gradient(ellipse at center, rgba(196, 92, 38, 0.06) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }}
+          />
+
+          <div style={{ marginBottom: 32, position: "relative" }}>
             <span
               className="font-sans"
               style={{
-                fontSize: "clamp(44px, 6vw, 64px)",
+                fontSize: "clamp(48px, 7vw, 72px)",
                 fontWeight: 400,
                 lineHeight: 1,
-                letterSpacing: "-0.03em",
+                letterSpacing: "-0.04em",
                 color: "#1e1c18",
               }}
             >
@@ -115,7 +138,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             </span>
             <span
               className="font-sans"
-              style={{ fontSize: 15, color: "#6b6560", marginLeft: 4 }}
+              style={{ fontSize: 16, color: "#6b6560", marginLeft: 6, letterSpacing: "-0.01em" }}
             >
               /mo
             </span>
@@ -124,18 +147,28 @@ export default function Pricing({ onScrollTo }: PricingProps) {
           <div
             className="flex flex-col items-start"
             style={{
-              gap: 10,
-              maxWidth: 360,
-              margin: "0 auto 32px",
+              gap: "clamp(12px, 1.5vh, 14px)",
+              maxWidth: 380,
+              margin: "0 auto 40px",
               textAlign: "left",
+              position: "relative",
             }}
           >
             {includeKeys.map((key) => (
-              <div key={key} className="flex items-start" style={{ gap: 10 }}>
-                <span style={{ fontSize: 12, color: "#7a9e7e", flexShrink: 0, marginTop: 3 }}>
+              <div key={key} className="flex items-start group" style={{ gap: 12, transition: "transform 0.3s ease" }}>
+                <span
+                  style={{
+                    fontSize: 14,
+                    color: "#7a9e7e",
+                    flexShrink: 0,
+                    marginTop: 1,
+                    transition: "transform 0.3s ease",
+                  }}
+                  className="group-hover:scale-110 inline-block"
+                >
                   ✓
                 </span>
-                <span className="font-sans" style={{ fontSize: 13, lineHeight: 1.5, color: "#6b6560" }}>
+                <span className="font-sans" style={{ fontSize: "clamp(13px, 1.1vw, 14px)", lineHeight: 1.5, color: "#6b6560" }}>
                   {t(key)}
                 </span>
               </div>
@@ -146,20 +179,26 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             href="https://tidycal.com/attiteud/chat"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans transition-all duration-300"
+            className="font-sans transition-all duration-300 inline-block"
             style={{
-              padding: "14px 36px",
+              padding: "16px 48px",
               backgroundColor: "#1e1c18",
               color: "#f0ebe3",
               border: "none",
               cursor: "pointer",
-              fontSize: 14,
-              letterSpacing: "0.01em",
+              fontSize: "clamp(13px, 1.1vw, 15px)",
+              letterSpacing: "0.02em",
               textDecoration: "none",
-              display: "inline-block",
+              position: "relative",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#c45c26"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1e1c18"; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#c45c26";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#1e1c18";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
           >
             {t("nav_cta")}
           </a>

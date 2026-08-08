@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLang } from "../hooks/useLang";
 import FlashingText from "../components/FlashingText";
+import AnimatedCounter from "../components/AnimatedCounter";
 import SectionDivider from "../components/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -90,49 +91,51 @@ export default function Research({ onScrollTo }: ResearchProps) {
           />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap: 12 }}>
+        <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap: 2 }}>
           {stats.map((stat, i) => (
             <div
               key={stat.labelKey}
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
-                padding: "28px 20px",
+                padding: "clamp(28px, 4vh, 48px) 20px",
                 border: "1px solid rgba(232, 228, 220, 0.06)",
                 opacity: 0,
-                transition: "border-color 0.4s ease, background-color 0.4s ease",
+                transition: "border-color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease",
                 cursor: "default",
+                position: "relative",
+                overflow: "hidden",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(232, 228, 220, 0.14)";
-                e.currentTarget.style.backgroundColor = "rgba(232, 228, 220, 0.025)";
+                e.currentTarget.style.borderColor = "rgba(196, 92, 38, 0.25)";
+                e.currentTarget.style.backgroundColor = "rgba(196, 92, 38, 0.04)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "rgba(232, 228, 220, 0.06)";
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
-              <div
-                className="font-sans"
+              <AnimatedCounter
+                value={stat.figure}
+                duration={1.8}
                 style={{
-                  fontSize: "clamp(28px, 3.5vw, 44px)",
+                  fontSize: "clamp(36px, 4.5vw, 56px)",
                   fontWeight: 400,
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
                   color: "#e8a87c",
-                  marginBottom: 10,
+                  marginBottom: 12,
+                  fontVariantNumeric: "tabular-nums",
                 }}
-              >
-                {stat.figure}
-              </div>
+              />
               <p
                 className="font-sans"
-                style={{ fontSize: 13, lineHeight: 1.5, color: "#e8e4dc", marginBottom: 6 }}
+                style={{ fontSize: 13, lineHeight: 1.5, color: "#e8e4dc", marginBottom: 8, maxWidth: "24ch" }}
               >
                 {t(stat.labelKey)}
               </p>
               <span
                 className="font-mono"
-                style={{ fontSize: 10, letterSpacing: "0.06em", color: "#5a544f", textTransform: "uppercase" }}
+                style={{ fontSize: 10, letterSpacing: "0.08em", color: "rgba(90, 84, 79, 0.7)", textTransform: "uppercase" }}
               >
                 {stat.source}
               </span>

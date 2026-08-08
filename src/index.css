@@ -46,4 +46,48 @@
   html {
     scroll-behavior: auto;
   }
+
+  ::selection {
+    background: rgba(196, 92, 38, 0.18);
+    color: #1e1c18;
+  }
+
+  ::-moz-selection {
+    background: rgba(196, 92, 38, 0.18);
+    color: #1e1c18;
+  }
+}
+
+/* Micro-interaction utilities */
+@layer components {
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .hover-glow:hover {
+    box-shadow: 0 0 0 1px rgba(196, 92, 38, 0.2), 0 4px 20px rgba(196, 92, 38, 0.08);
+  }
+
+  .text-link {
+    transition: color 0.25s ease, border-color 0.25s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .text-link:hover {
+    color: #c45c26;
+    border-bottom-color: #c45c26;
+  }
+}
+
+/* Smooth section transitions */
+@layer utilities {
+  .section-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
 }

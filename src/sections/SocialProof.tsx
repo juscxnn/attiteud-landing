@@ -14,6 +14,7 @@ const clientKeys = [
     tagKey: "client_nichesim_tag",
     storyKey: "client_nichesim_story",
     metricsKey: "client_nichesim_metrics",
+    accent: "rgba(196, 92, 38, 0.08)",
   },
   {
     id: "copyscouts",
@@ -21,6 +22,7 @@ const clientKeys = [
     tagKey: "client_copyscouts_tag",
     storyKey: "client_copyscouts_story",
     metricsKey: "client_copyscouts_metrics",
+    accent: "rgba(122, 158, 126, 0.08)",
   },
   {
     id: "podletter",
@@ -28,6 +30,7 @@ const clientKeys = [
     tagKey: "client_podletter_tag",
     storyKey: "client_podletter_story",
     metricsKey: "client_podletter_metrics",
+    accent: "rgba(232, 168, 124, 0.08)",
   },
   {
     id: "gatekeep",
@@ -35,6 +38,7 @@ const clientKeys = [
     tagKey: "client_gatekeep_tag",
     storyKey: "client_gatekeep_story",
     metricsKey: "client_gatekeep_metrics",
+    accent: "rgba(196, 92, 38, 0.08)",
   },
 ];
 
@@ -133,13 +137,31 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                 borderTop: "1px solid rgba(232, 228, 220, 0.06)",
                 padding: "clamp(32px, 4vh, 48px) 0",
                 opacity: 0,
+                transition: "background-color 0.5s ease, border-color 0.5s ease",
+                marginLeft: "-8px",
+                marginRight: "-8px",
+                paddingLeft: "8px",
+                paddingRight: "8px",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = e.currentTarget.style.backgroundColor || client.accent;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: 24 }}>
                 <div className="flex-shrink-0" style={{ width: 140, minHeight: 40 }}>
                   <span
                     className="font-mono"
-                    style={{ fontSize: 13, fontWeight: 400, color: "#e8e4dc", letterSpacing: "0.02em" }}
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 400,
+                      color: "#e8e4dc",
+                      letterSpacing: "0.02em",
+                      opacity: 0.7,
+                      transition: "opacity 0.3s ease",
+                    }}
                   >
                     {t(client.nameKey)}
                   </span>
@@ -156,7 +178,14 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                     />
                     <span
                       className="font-mono"
-                      style={{ fontSize: 10, letterSpacing: "0.06em", color: "#7a9e7e", textTransform: "uppercase" }}
+                      style={{
+                        fontSize: 10,
+                        letterSpacing: "0.06em",
+                        color: "#7a9e7e",
+                        textTransform: "uppercase",
+                        border: "1px solid rgba(122, 158, 126, 0.2)",
+                        padding: "2px 8px",
+                      }}
                     >
                       {t(client.tagKey)}
                     </span>
@@ -164,7 +193,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
 
                   <p
                     className="font-sans"
-                    style={{ fontSize: 13, lineHeight: 1.55, color: "#7a746d", maxWidth: "50ch", marginBottom: 12 }}
+                    style={{ fontSize: 13, lineHeight: 1.55, color: "#7a746d", maxWidth: "50ch", marginBottom: 14 }}
                   >
                     {t(client.storyKey)}
                   </p>
@@ -177,10 +206,11 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                         style={{
                           fontSize: 10,
                           letterSpacing: "0.06em",
-                          color: "#7a9e7e",
+                          color: "#e8a87c",
                           textTransform: "uppercase",
-                          border: "1px solid rgba(122, 158, 126, 0.3)",
+                          border: "1px solid rgba(232, 168, 124, 0.2)",
                           padding: "4px 10px",
+                          transition: "border-color 0.3s ease, color 0.3s ease",
                         }}
                       >
                         {metric.trim()}

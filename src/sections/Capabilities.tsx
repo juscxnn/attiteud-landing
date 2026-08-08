@@ -8,9 +8,21 @@ import SectionDivider from "../components/SectionDivider";
 gsap.registerPlugin(ScrollTrigger);
 
 const capKeys = [
-  { titleKey: "cap_1_title", descKey: "cap_1_desc" },
-  { titleKey: "cap_2_title", descKey: "cap_2_desc" },
-  { titleKey: "cap_3_title", descKey: "cap_3_desc" },
+  {
+    titleKey: "cap_1_title",
+    descKey: "cap_1_desc",
+    icon: "◇",
+  },
+  {
+    titleKey: "cap_2_title",
+    descKey: "cap_2_desc",
+    icon: "◆",
+  },
+  {
+    titleKey: "cap_3_title",
+    descKey: "cap_3_desc",
+    icon: "◎",
+  },
 ];
 
 interface CapabilitiesProps {
@@ -90,19 +102,33 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
               key={cap.titleKey}
               ref={(el) => { cardsRef.current[i] = el; }}
               style={{
-                borderTop: "1px solid rgba(30, 28, 24, 0.08)",
-                padding: "32px 0",
+                borderTop: i === 0 ? "1px solid rgba(30, 28, 24, 0.08)" : "none",
+                borderBottom: "1px solid rgba(30, 28, 24, 0.06)",
+                padding: "clamp(28px, 3.5vh, 40px) 0",
                 opacity: 0,
+                transition: "background-color 0.5s ease, border-color 0.5s ease, padding-left 0.4s ease",
+                paddingLeft: 0,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.paddingLeft = "12px";
+                e.currentTarget.style.borderColor = "rgba(196, 92, 38, 0.15)";
+                e.currentTarget.style.backgroundColor = "rgba(196, 92, 38, 0.03)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.paddingLeft = "0px";
+                e.currentTarget.style.borderColor = "rgba(30, 28, 24, 0.06)";
+                e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
               <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: 24 }}>
                 <span
                   className="font-mono flex-shrink-0"
                   style={{
-                    fontSize: 12,
-                    color: "rgba(30, 28, 24, 0.18)",
+                    fontSize: "clamp(14px, 1.5vw, 18px)",
+                    color: i === 0 ? "#c45c26" : "rgba(30, 28, 24, 0.12)",
                     width: 32,
-                    paddingTop: 4,
+                    paddingTop: 2,
+                    transition: "color 0.4s ease",
                   }}
                 >
                   0{i + 1}
