@@ -78,7 +78,7 @@ export default function SectionDivider({ onClick }: SectionDividerProps) {
         <span
           className="font-mono uppercase"
           style={{
-            fontSize: 9,
+            fontSize: 11,
             letterSpacing: "0.22em",
             color: hovered ? "#e8a87c" : "rgba(232, 168, 124, 0.6)",
             transition: "color 0.3s ease",

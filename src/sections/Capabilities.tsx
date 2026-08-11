@@ -78,7 +78,7 @@ export default function Capabilities({ onScrollTo }: CapabilitiesProps) {
         <div ref={headerRef} style={{ marginBottom: 48, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("capabilities_label")}
           </span>

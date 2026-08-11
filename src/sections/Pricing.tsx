@@ -59,7 +59,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
       <div ref={contentRef} style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
         <span
           className="font-mono uppercase block"
-          style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16, opacity: 0 }}
+          style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16, opacity: 0 }}
         >
           {t("pricing_label")}
         </span>
@@ -168,7 +168,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
                 >
                   ✓
                 </span>
-                <span className="font-sans" style={{ fontSize: "clamp(13px, 1.1vw, 14px)", lineHeight: 1.5, color: "#6b6560" }}>
+                <span className="font-sans" style={{ fontSize: "clamp(13px, 1.1vw, 15px)", lineHeight: 1.5, color: "#6b6560" }}>
                   {t(key)}
                 </span>
               </div>

@@ -31,15 +31,15 @@ export default function Footer() {
           <span style={{ fontSize: 16, lineHeight: 1, marginRight: 1 }}>✽</span>
           <span>Attiteud</span>
           <span style={{ opacity: 0.5 }}>.</span>
-          <span className="font-mono" style={{ fontSize: 10, color: "#5a544f", marginLeft: 8, letterSpacing: "0.04em" }}>
+          <span className="font-mono" style={{ fontSize: 12, color: "#5a544f", marginLeft: 8, letterSpacing: "0.04em" }}>
             x Humbl Design
           </span>
         </span>
         <div className="flex items-center" style={{ gap: 24 }}>
-          <span className="font-sans" style={{ fontSize: 13, color: "#5a544f" }}>
+          <span className="font-sans" style={{ fontSize: 14, color: "#5a544f" }}>
             {t("footer_privacy")}
           </span>
-          <span className="font-sans" style={{ fontSize: 13, color: "#5a544f" }}>
+          <span className="font-sans" style={{ fontSize: 14, color: "#5a544f" }}>
             {t("footer_terms")}
           </span>
         </div>

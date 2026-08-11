@@ -26,7 +26,7 @@ export default function LanguageToggle() {
         border: "1px solid rgba(122, 118, 109, 0.2)",
         padding: "4px 10px",
         cursor: "pointer",
-        fontSize: 11,
+        fontSize: 13,
         letterSpacing: "0.06em",
         transition: "all 0.2s ease",
       }}

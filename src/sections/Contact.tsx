@@ -69,7 +69,7 @@ export default function Contact() {
       >
         <span
           className="font-mono uppercase"
-          style={{ fontSize: 11, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 20, opacity: 0 }}
+          style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 20, opacity: 0 }}
         >
           {t("contact_label")}
         </span>

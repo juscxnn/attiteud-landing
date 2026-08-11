@@ -171,7 +171,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
           ref={subtitleRef}
           className="font-sans"
           style={{
-            fontSize: "clamp(13px, 1.3vw, 17px)",
+            fontSize: "clamp(14px, 1.5vw, 18px)",
             lineHeight: 1.55,
             letterSpacing: "0.01em",
             color: "#6b6560",
@@ -201,7 +201,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
               color: "#f0ebe3",
               border: "none",
               cursor: "pointer",
-              fontSize: "clamp(13px, 1.1vw, 14px)",
+              fontSize: "clamp(14px, 1.1vw, 15px)",
               letterSpacing: "0.01em",
               textDecoration: "none",
               display: "inline-block",
@@ -221,7 +221,7 @@ export default function Hero({ onScrollTo, loaded }: HeroProps) {
               color: "#1e1c18",
               border: "1px solid rgba(30,28,24,0.18)",
               cursor: "pointer",
-              fontSize: "clamp(13px, 1.1vw, 14px)",
+              fontSize: "clamp(14px, 1.1vw, 15px)",
               letterSpacing: "0.01em",
             }}
             onMouseEnter={(e) => {

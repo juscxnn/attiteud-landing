@@ -43,7 +43,7 @@ export default function TechMarquee() {
         className="font-mono uppercase"
         style={{
           textAlign: "center",
-          fontSize: 10,
+          fontSize: 12,
           letterSpacing: "0.18em",
           color: "rgba(122, 116, 109, 0.5)",
           marginBottom: "clamp(20px, 3vh, 36px)",
