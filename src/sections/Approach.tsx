@@ -68,7 +68,7 @@ export default function Approach({ onScrollTo }: ApproachProps) {
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: 64, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("approach_label")}
           </span>
@@ -164,7 +164,7 @@ export default function Approach({ onScrollTo }: ApproachProps) {
                 <p
                   className="font-sans"
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     lineHeight: 1.6,
                     color: "#7a746d",
                     maxWidth: "40ch",

@@ -59,7 +59,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
       <div ref={contentRef} style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
         <span
           className="font-mono uppercase block"
-          style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16, opacity: 0 }}
+          style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16, opacity: 0 }}
         >
           {t("pricing_label")}
         </span>
@@ -81,7 +81,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
         <p
           className="font-sans"
           style={{
-            fontSize: 14,
+            fontSize: 16,
             lineHeight: 1.6,
             color: "#6b6560",
             maxWidth: "42ch",
@@ -138,7 +138,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
             </span>
             <span
               className="font-sans"
-              style={{ fontSize: 16, color: "#6b6560", marginLeft: 6, letterSpacing: "-0.01em" }}
+              style={{ fontSize: 18, color: "#6b6560", marginLeft: 6, letterSpacing: "-0.01em" }}
             >
               /mo
             </span>
@@ -158,7 +158,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
               <div key={key} className="flex items-start group" style={{ gap: 12, transition: "transform 0.3s ease" }}>
                 <span
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     color: "#7a9e7e",
                     flexShrink: 0,
                     marginTop: 1,
@@ -168,7 +168,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
                 >
                   ✓
                 </span>
-                <span className="font-sans" style={{ fontSize: "clamp(13px, 1.1vw, 15px)", lineHeight: 1.5, color: "#6b6560" }}>
+                <span className="font-sans" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", lineHeight: 1.5, color: "#6b6560" }}>
                   {t(key)}
                 </span>
               </div>
@@ -186,7 +186,7 @@ export default function Pricing({ onScrollTo }: PricingProps) {
               color: "#f0ebe3",
               border: "none",
               cursor: "pointer",
-              fontSize: "clamp(13px, 1.1vw, 15px)",
+              fontSize: "clamp(14px, 1.1vw, 16px)",
               letterSpacing: "0.02em",
               textDecoration: "none",
               position: "relative",

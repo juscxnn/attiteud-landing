@@ -100,7 +100,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: 48, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("clients_label")}
           </span>
@@ -152,7 +152,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                 <span
                   className="font-mono"
                   style={{
-                    fontSize: 14,
+                    fontSize: 15,
                     color: "#e8e4dc",
                     letterSpacing: "0.02em",
                     transition: "color 0.3s ease",
@@ -163,7 +163,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
                 <span
                   className="font-mono"
                   style={{
-                    fontSize: 11,
+                  fontSize: 16,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     color: project.id === "copyscouts" || project.id === "podletter" ? "#7a9e7e" : "#e8a87c",
@@ -177,7 +177,7 @@ export default function SocialProof({ onScrollTo }: SocialProofProps) {
               <p
                 className="font-sans"
                 style={{
-                  fontSize: 13,
+                  fontSize: 14,
                   lineHeight: 1.5,
                   color: "#7a746d",
                   maxWidth: "32ch",

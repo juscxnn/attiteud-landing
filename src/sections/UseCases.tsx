@@ -70,7 +70,7 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: 56, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("usecases_label")}
           </span>
@@ -91,7 +91,7 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
           <p
             className="font-sans"
             style={{
-              fontSize: 14,
+              fontSize: 16,
               lineHeight: 1.6,
               color: "#7a746d",
               maxWidth: "42ch",
@@ -134,12 +134,12 @@ export default function UseCases({ onScrollTo }: UseCasesProps) {
                 />
                 <span
                   className="font-mono"
-                  style={{ fontSize: 12, letterSpacing: "0.06em", color: "#7a9e7e", textTransform: "uppercase" }}
+                  style={{ fontSize: 14, letterSpacing: "0.06em", color: "#7a9e7e", textTransform: "uppercase" }}
                 >
                   {t(dept.tagKey)}
                 </span>
               </div>
-              <p className="font-sans" style={{ fontSize: 14, lineHeight: 1.55, color: "#7a746d" }}>
+              <p className="font-sans" style={{ fontSize: 16, lineHeight: 1.55, color: "#7a746d" }}>
                 {t(dept.painKey)}
               </p>
             </div>

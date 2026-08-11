@@ -56,7 +56,7 @@ export default function Founders() {
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: 56, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("founders_label")}
           </span>
@@ -123,7 +123,7 @@ export default function Founders() {
             <span
               className="font-mono uppercase block"
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 letterSpacing: "0.1em",
                 color: "#c45c26",
                 marginBottom: 12,
@@ -134,7 +134,7 @@ export default function Founders() {
             <p
               className="font-sans"
               style={{
-                fontSize: 14,
+                fontSize: 16,
                 lineHeight: 1.6,
                 color: "#7a746d",
                 maxWidth: "32ch",
@@ -191,7 +191,7 @@ export default function Founders() {
             <span
               className="font-mono uppercase block"
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 letterSpacing: "0.1em",
                 color: "#c45c26",
                 marginBottom: 12,
@@ -202,7 +202,7 @@ export default function Founders() {
             <p
               className="font-sans"
               style={{
-                fontSize: 14,
+                fontSize: 16,
                 lineHeight: 1.6,
                 color: "#7a746d",
                 maxWidth: "32ch",

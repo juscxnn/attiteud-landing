@@ -72,7 +72,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
         <div ref={headerRef} style={{ marginBottom: 36, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("partnership_label")}
           </span>
@@ -128,7 +128,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
           <p
             className="font-sans"
             style={{
-              fontSize: 14,
+              fontSize: 16,
               lineHeight: 1.6,
               color: "#7a746d",
               maxWidth: "44ch",
@@ -143,7 +143,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
           <p
             className="font-sans"
             style={{
-              fontSize: 14,
+              fontSize: 16,
               lineHeight: 1.65,
               color: "#7a746d",
               maxWidth: "54ch",
@@ -190,7 +190,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               </div>
               <span
                 className="font-sans"
-                style={{ fontSize: 13, lineHeight: 1.45, color: "#7a746d" }}
+                style={{ fontSize: 14, lineHeight: 1.45, color: "#7a746d" }}
               >
                 {t(stat.key)}
               </span>
@@ -210,7 +210,7 @@ export default function Partnership({ onScrollTo }: PartnershipProps) {
               color: "#1e1c18",
               border: "none",
               cursor: "pointer",
-              fontSize: 14,
+              fontSize: 16,
               letterSpacing: "0.01em",
               textDecoration: "none",
             }}

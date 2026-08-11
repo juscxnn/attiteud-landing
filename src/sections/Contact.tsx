@@ -69,7 +69,7 @@ export default function Contact() {
       >
         <span
           className="font-mono uppercase"
-          style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 20, opacity: 0 }}
+          style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 20, opacity: 0 }}
         >
           {t("contact_label")}
         </span>
@@ -107,7 +107,7 @@ export default function Contact() {
             href="mailto:justin@attiteud.com"
             className="font-mono transition-all duration-300"
             style={{
-              fontSize: 14,
+              fontSize: 16,
               color: "#1e1c18",
               textDecoration: "none",
               borderBottom: "1px solid rgba(30, 28, 24, 0.2)",

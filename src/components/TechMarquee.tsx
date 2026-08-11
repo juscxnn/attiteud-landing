@@ -43,7 +43,7 @@ export default function TechMarquee() {
         className="font-mono uppercase"
         style={{
           textAlign: "center",
-          fontSize: 12,
+          fontSize: 14,
           letterSpacing: "0.18em",
           color: "rgba(122, 116, 109, 0.5)",
           marginBottom: "clamp(20px, 3vh, 36px)",
@@ -67,7 +67,7 @@ export default function TechMarquee() {
               key={`${tech}-${i}`}
               className="font-mono whitespace-nowrap"
               style={{
-                fontSize: "clamp(13px, 1.5vw, 16px)",
+                fontSize: "clamp(15px, 1.5vw, 18px)",
                 letterSpacing: "0.04em",
                 color: i % 3 === 0 ? "#c45c26" : i % 3 === 1 ? "#7a9e7e" : "rgba(232, 228, 220, 0.4)",
                 transition: "color 0.3s ease",

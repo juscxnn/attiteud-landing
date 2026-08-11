@@ -71,7 +71,7 @@ export default function Research({ onScrollTo }: ResearchProps) {
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: 56, opacity: 0 }}>
           <span
             className="font-mono uppercase block"
-            style={{ fontSize: 13, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
+            style={{ fontSize: 15, letterSpacing: "0.18em", color: "#c45c26", marginBottom: 16 }}
           >
             {t("research_stats_label")}
           </span>
@@ -129,13 +129,13 @@ export default function Research({ onScrollTo }: ResearchProps) {
               />
               <p
                 className="font-sans"
-                style={{ fontSize: 14, lineHeight: 1.5, color: "#e8e4dc", marginBottom: 8, maxWidth: "24ch" }}
+                style={{ fontSize: 16, lineHeight: 1.5, color: "#e8e4dc", marginBottom: 8, maxWidth: "24ch" }}
               >
                 {t(stat.labelKey)}
               </p>
               <span
                 className="font-mono"
-                style={{ fontSize: 12, letterSpacing: "0.08em", color: "rgba(90, 84, 79, 0.7)", textTransform: "uppercase" }}
+                style={{ fontSize: 14, letterSpacing: "0.08em", color: "rgba(90, 84, 79, 0.7)", textTransform: "uppercase" }}
               >
                 {stat.source}
               </span>
