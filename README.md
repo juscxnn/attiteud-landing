@@ -42,7 +42,7 @@ src/
   components/   Wordmark, strata figure, relay figure, asterisk mark
   index.css     Dark design system, view transitions and responsive fit
 hairline/       Bespoke Hairline figure source, bench, template and license
-public/         Favicons, fonts, robots.txt, sitemap.xml, social image, embed
+public/         Favicons, fonts, robots.txt, sitemap.xml, social image
 index.html      Metadata, structured data, fonts, favicon
 vercel.json     Redirects, SPA rewrite, security headers
 ```

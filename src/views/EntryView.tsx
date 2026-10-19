@@ -1,4 +1,4 @@
-import StrataFigure from "../components/StrataFigure";
+import Cycle from "../components/Cycle";
 import type { ViewId } from "./types";
 
 interface EntryViewProps {
@@ -14,62 +14,50 @@ export default function EntryView({ active, onNavigate }: EntryViewProps) {
       aria-hidden={!active}
       inert={!active}
     >
-      <div className="view-inner entry-grid">
-        <div className="entry-copy">
-          <div className="entry-topline">
-            <span>Attiteud / Entry 001</span>
-            <span>English / Est. 2025</span>
-          </div>
+      <div className="view-inner entry-layout">
+        <div className="entry-topline">
+          <span>Attiteud / Entry 001</span>
+          <span>English / Est. 2025</span>
+        </div>
 
-          <h1 className="entry-headword" data-view-heading tabIndex={-1}>
-            at·ti·teud
-          </h1>
+        <h1 className="entry-headword" data-view-heading tabIndex={-1}>
+          at·ti·teud
+        </h1>
 
-          <div className="entry-pronunciation">
-            <span>/ˈætɪtjuːd/</span>
-            <span className="entry-pos">noun</span>
-          </div>
+        <div className="entry-pronunciation">
+          <span>/ˈætɪtjuːd/</span>
+          <span className="entry-pos">noun</span>
+        </div>
 
-          <div className="entry-definitions">
-            <div className="entry-def">
-              <span className="entry-number" aria-hidden="true">
-                1.
-              </span>
-              <p className="entry-definition">
-                a <em>small</em> thing that makes a <em>big</em> difference
-                <span className="accent">.</span>
-              </p>
-            </div>
+        <p className="entry-definition">
+          <span className="entry-number" aria-hidden="true">
+            1.
+          </span>{" "}
+          a <em>small</em> thing that makes a <em>big</em> difference
+          <span className="accent">.</span>
+        </p>
 
-            <div className="entry-origin">
-              <span className="entry-label">Origin</span>
-              <div>
-                <p className="entry-origin-note">
-                  A respelling of <em>attitude</em>.
-                </p>
-                <p className="entry-quote">
-                  “attiteud is a small thing that makes a big difference.”
-                </p>
-              </div>
-            </div>
+        <p className="entry-quote">
+          “attiteud is a small thing that makes a big difference.”
+        </p>
 
-            <div className="entry-def entry-def-secondary">
-              <span className="entry-number" aria-hidden="true">
-                2.
-              </span>
-              <div>
-                <p className="entry-label">Proper noun</p>
-                <p className="entry-definition-small">
-                  an independent technology company.
-                </p>
-              </div>
-            </div>
-          </div>
+        <Cycle />
+
+        <div className="entry-meta">
+          <p className="entry-sense">
+            <span className="entry-number" aria-hidden="true">
+              2.
+            </span>{" "}
+            <span className="entry-label">Proper noun</span>{" "}
+            <span className="entry-sense-text">
+              an independent technology company.
+            </span>
+          </p>
 
           <div className="entry-links">
-            <div className="entry-link-row">
+            <p className="entry-link-row">
               <span className="entry-label">Related</span>
-              <p className="entry-terms">
+              <span className="entry-terms">
                 <a
                   href="#company"
                   onClick={(event) => {
@@ -99,10 +87,10 @@ export default function EntryView({ active, onNavigate }: EntryViewProps) {
                 >
                   ventures
                 </a>
-              </p>
-            </div>
+              </span>
+            </p>
 
-            <div className="entry-link-row">
+            <p className="entry-link-row">
               <span className="entry-label">See also</span>
               <a
                 className="entry-see-also"
@@ -114,24 +102,12 @@ export default function EntryView({ active, onNavigate }: EntryViewProps) {
               >
                 <span className="entry-see-name">
                   Gatekeep <span aria-hidden="true">↗</span>
-                </span>
+                </span>{" "}
                 <span className="entry-see-note">
                   an AI-native operating system for venture
                 </span>
               </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="entry-figure">
-          <div className="figure-meta">
-            <span>Fig. 1</span>
-            <span>Strata / 001</span>
-          </div>
-          <StrataFigure theme="dark" eager />
-          <div className="figure-meta figure-meta-bottom">
-            <span>A small thing / a big difference</span>
-            <span>Move pointer</span>
+            </p>
           </div>
         </div>
       </div>
