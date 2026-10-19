@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Attiteud · Strata</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --hairline-plate: #f2eee5;
+        --hairline-hi: #c45c26;
+        --hairline-edge: rgba(27, 25, 22, 0.56);
+        --hairline-mid: rgba(27, 25, 22, 0.3);
+        --hairline-lo: rgba(27, 25, 22, 0.13);
+        --hairline-stroke: 0.9;
+        background: transparent;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      #stage {
+        width: 100%;
+        aspect-ratio: 5 / 4;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <p id="live" class="sr-only" aria-live="polite"></p>
+
+    <script>/*KERNEL*/</script>
+    <script>
+      window.hairline = (figure) => {
+        const stage = document.getElementById("stage");
+        const live = document.getElementById("live");
+
+        HL.inject(document);
+        stage.setAttribute("data-hairline", figure.name);
+        stage.setAttribute("role", "img");
+        stage.setAttribute("aria-label", figure.means);
+
+        const svg = HL.mk(
+          "svg",
+          { viewBox: "0 0 400 320", "aria-hidden": "true" },
+          stage
+        );
+
+        let text = null;
+        const read = {
+          get textContent() {
+            return text;
+          },
+          set textContent(value) {
+            text = value == null ? "" : String(value);
+            live.textContent = text;
+          },
+        };
+
+        const handle = figure.mount({ stage, svg, read }, 12);
+        if (text === null) read.textContent = "rest";
+
+        window.__attiteudFigure = handle;
+        document.documentElement.dataset.ready = "true";
+      };
+    </script>
+    <script type="module">/*FIGURE*/</script>
+  </body>
+</html>

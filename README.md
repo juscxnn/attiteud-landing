@@ -7,9 +7,10 @@ Corporate website for Attiteud, an independent technology company building intel
 - React 19 + TypeScript
 - Vite
 - Custom CSS with self-hosted IBM Plex Sans and IBM Plex Mono
-- No runtime animation or routing dependencies
+- `@lucasmarkes/hairline` for the interactive isometric figures
+- No routing dependencies
 
-IBM Plex is licensed under the SIL Open Font License. The license is included at `public/fonts/LICENSE.txt`.
+IBM Plex is licensed under the SIL Open Font License. The license is included at `public/fonts/LICENSE.txt`. Hairline is MIT licensed; see `hairline/LICENSE.txt`.
 
 ## Development
 
@@ -30,11 +31,12 @@ npm run preview
 
 ```text
 src/
-  components/   Shared wordmark, section label, reveal, and asterisk mark
+  components/   Shared wordmark, figures, section label, reveal, asterisk mark
   sections/     Navigation, Hero, Company, Focus, Ventures, Closing, Footer
   index.css     Design system and responsive layout
+hairline/       Bespoke Hairline figure source, bench, template and license
+public/         Favicons, fonts, robots.txt, sitemap.xml, social image, embed
 index.html      Metadata, structured data, fonts, favicon
-public/         Favicons, robots.txt, sitemap.xml, social image
 vercel.json     Redirects, SPA rewrite, security headers
 ```
 

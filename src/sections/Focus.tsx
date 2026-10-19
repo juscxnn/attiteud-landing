@@ -1,5 +1,6 @@
 import Reveal from "../components/Reveal";
 import SectionLabel from "../components/SectionLabel";
+import StrataFigure from "../components/StrataFigure";
 
 const areas = [
   {
@@ -35,7 +36,14 @@ export default function Focus() {
             </h2>
           </Reveal>
           <Reveal delay={90}>
-            <p className="section-note">Three domains, one long horizon.</p>
+            <div className="focus-instrument">
+              <div className="instrument-label">
+                <span>System study</span>
+                <span>001</span>
+              </div>
+              <StrataFigure />
+              <p className="section-note">Three domains, one long horizon.</p>
+            </div>
           </Reveal>
         </div>
 
