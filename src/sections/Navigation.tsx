@@ -115,7 +115,7 @@ export default function Navigation({
         aria-hidden={!menuOpen}
       >
         <nav aria-label="Mobile">
-          {links.map((link, index) => (
+          {links.map((link) => (
             <a
               key={link.view}
               href={link.href}
@@ -126,10 +126,7 @@ export default function Navigation({
                 select(link.view);
               }}
             >
-              <span className="mobile-link-index" aria-hidden="true">
-                0{index + 1}
-              </span>
-              <span>{link.label}</span>
+              {link.label}
             </a>
           ))}
         </nav>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import GridBackdrop from "./components/GridBackdrop";
 import Navigation from "./sections/Navigation";
 import Footer from "./sections/Footer";
 import EntryView from "./views/EntryView";
@@ -54,6 +55,8 @@ export default function App() {
 
   return (
     <div className="site-shell">
+      <GridBackdrop />
+
       <a
         className="skip-link"
         href="#main"

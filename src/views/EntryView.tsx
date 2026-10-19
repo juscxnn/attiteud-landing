@@ -15,11 +15,6 @@ export default function EntryView({ active, onNavigate }: EntryViewProps) {
       inert={!active}
     >
       <div className="view-inner entry-layout">
-        <div className="entry-topline">
-          <span>Attiteud / Entry 001</span>
-          <span>English / Est. 2025</span>
-        </div>
-
         <h1 className="entry-headword" data-view-heading tabIndex={-1}>
           at·ti·teud
         </h1>

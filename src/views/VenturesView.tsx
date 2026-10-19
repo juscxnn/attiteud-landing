@@ -16,11 +16,6 @@ export default function VenturesView({ active }: VenturesViewProps) {
       inert={!active}
     >
       <div className="view-inner">
-        <div className="view-head">
-          <span className="view-label">02 / Ventures</span>
-          <span className="view-label">See also</span>
-        </div>
-
         <div className="ventures-head">
           <h2 className="view-title" data-view-heading tabIndex={-1}>
             Selected Ventures.
@@ -34,9 +29,6 @@ export default function VenturesView({ active }: VenturesViewProps) {
         <article className="venture-card" data-details={detailsOpen}>
           <div className="venture-copy">
             <div className="venture-top">
-              <span className="venture-index" aria-hidden="true">
-                01
-              </span>
               <span className="venture-status">
                 <span className="status-dot" aria-hidden="true" />
                 In operation
@@ -92,19 +84,9 @@ export default function VenturesView({ active }: VenturesViewProps) {
           </div>
 
           <div className="venture-figure">
-            <div className="figure-meta">
-              <span>Fig. 2</span>
-              <span>Relay / 001</span>
-            </div>
             <RelayFigure active={active} />
-            <div className="figure-meta figure-meta-bottom">
-              <span>One record / many paths</span>
-              <span>Move pointer</span>
-            </div>
           </div>
         </article>
-
-        <p className="ventures-more">More in time.</p>
       </div>
     </section>
   );

@@ -15,11 +15,6 @@ export default function ContactView({ active }: ContactViewProps) {
       <Asterisk className="contact-asterisk" />
 
       <div className="view-inner">
-        <div className="view-head">
-          <span className="view-label">03 / Contact</span>
-          <span className="view-label">Correspondence</span>
-        </div>
-
         <div className="contact-grid">
           <h2 className="contact-title" data-view-heading tabIndex={-1}>
             The future is built deliberately

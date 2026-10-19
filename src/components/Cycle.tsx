@@ -7,20 +7,17 @@ export default function Cycle() {
 
       <svg className="cycle-stage cycle-flywheel" viewBox="0 0 100 100" fill="none">
         <circle className="cycle-ring" cx="50" cy="50" r="36" />
-        <g className="cycle-rotor">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <line
-              key={index}
-              x1="50"
-              y1="11"
-              x2="50"
-              y2="21"
-              transform={`rotate(${index * 45} 50 50)`}
-            />
-          ))}
-          <circle className="cycle-signal" cx="50" cy="11" r="2.4" />
+        <g className="cycle-asterisk">
+          <line x1="50" y1="14" x2="50" y2="86" />
+          <line x1="50" y1="14" x2="50" y2="86" transform="rotate(45 50 50)" />
+          <line x1="50" y1="14" x2="50" y2="86" transform="rotate(90 50 50)" />
+          <line x1="50" y1="14" x2="50" y2="86" transform="rotate(135 50 50)" />
+          <circle className="cycle-signal" cx="50" cy="14" r="2" />
+          <circle className="cycle-signal" cx="86" cy="50" r="2" />
+          <circle className="cycle-signal" cx="50" cy="86" r="2" />
+          <circle className="cycle-signal" cx="14" cy="50" r="2" />
         </g>
-        <circle className="cycle-core" cx="50" cy="50" r="4" />
+        <circle className="cycle-core" cx="50" cy="50" r="3" />
       </svg>
 
       <svg className="cycle-stage cycle-full" viewBox="0 0 100 100" fill="none">

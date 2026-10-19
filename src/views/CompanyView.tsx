@@ -4,17 +4,14 @@ interface CompanyViewProps {
 
 const areas = [
   {
-    index: "01",
     title: "Intelligence",
     description: "Information, analysis, decision-making systems, and applied AI.",
   },
   {
-    index: "02",
     title: "Infrastructure",
     description: "Foundational technologies that enable new products and workflows.",
   },
   {
-    index: "03",
     title: "Ventures",
     description:
       "Independent software products and businesses developed and operated by Attiteud.",
@@ -32,11 +29,6 @@ export default function CompanyView({ active }: CompanyViewProps) {
       inert={!active}
     >
       <div className="view-inner">
-        <div className="view-head">
-          <span className="view-label">01 / Company</span>
-          <span className="view-label">Proper noun</span>
-        </div>
-
         <div className="company-grid">
           <div className="company-lead">
             <h2 className="view-title" data-view-heading tabIndex={-1}>
@@ -50,11 +42,8 @@ export default function CompanyView({ active }: CompanyViewProps) {
             <p className="view-note">We develop, own, and operate what we build.</p>
 
             <div className="company-model" aria-label="Our approach">
-              {model.map((step, index) => (
+              {model.map((step) => (
                 <div className="model-step" key={step}>
-                  <span className="model-index" aria-hidden="true">
-                    0{index + 1}
-                  </span>
                   <span>{step}</span>
                 </div>
               ))}
@@ -62,20 +51,10 @@ export default function CompanyView({ active }: CompanyViewProps) {
           </div>
 
           <div className="company-focus">
-            <div className="focus-head">
-              <span className="view-label">Focus</span>
-              <span className="view-label">Three domains</span>
-            </div>
-
             {areas.map((area) => (
               <article className="focus-row" key={area.title}>
-                <span className="focus-index" aria-hidden="true">
-                  {area.index}
-                </span>
-                <div>
-                  <h3 className="focus-title">{area.title}</h3>
-                  <p className="focus-desc">{area.description}</p>
-                </div>
+                <h3 className="focus-title">{area.title}</h3>
+                <p className="focus-desc">{area.description}</p>
               </article>
             ))}
           </div>
