@@ -1,15 +1,21 @@
 # Hairline figures
 
-The Focus instrument is a bespoke Hairline figure, `strata`, drawn with the
-`hairline-create` skill. The source is `hairline/strata.js`; the validated
-standalone bench is `hairline/strata-bench.html`.
+The dictionary entry uses a bespoke Hairline figure, `strata`, as **Fig. 1**.
+The source is `hairline/strata.js`; the validated standalone bench is
+`hairline/strata-bench.html`.
 
-`public/hairline/strata.html` is the minimal embed page used by the site. It is
+The Ventures view uses Hairline’s `relay` figure as **Fig. 2**, themed in the
+site’s dark palette.
+
+`public/hairline/strata.html` is the minimal embed page used by the entry. It is
 generated from the skill kernel, the figure source and `hairline/embed-template.html`:
 
 ```sh
 node hairline/build-embed.mjs
 ```
+
+The embed reads `?theme=light` or `?theme=dark`; the site uses the dark theme
+and matches its plate colour to the raised dark surface.
 
 The Hairline engine and figures are MIT licensed. See `hairline/LICENSE.txt`.
 

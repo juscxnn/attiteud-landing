@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 import { relay } from "@lucasmarkes/hairline";
 
 interface RelayFigureProps {
+  active?: boolean;
   intensity?: number;
   theme?: "auto" | "light" | "dark";
   label?: string;
 }
 
 export default function RelayFigure({
+  active = true,
   intensity = 0.7,
   theme = "dark",
   label = "A shared record: founders and investors move through one system.",
@@ -16,11 +18,15 @@ export default function RelayFigure({
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
+    if (!active || !element) return;
 
     const figure = relay(element, { intensity, theme, label });
     return () => figure.destroy();
-  }, [intensity, theme, label]);
+  }, [active, intensity, theme, label]);
 
-  return <div ref={ref} />;
+  return (
+    <div className="relay-slot">
+      <div ref={ref} />
+    </div>
+  );
 }

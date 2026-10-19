@@ -17,6 +17,15 @@
         background: transparent;
       }
 
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --hairline-plate: #0e0d0b;
+        --hairline-hi: #e8a87c;
+        --hairline-edge: rgba(236, 231, 220, 0.5);
+        --hairline-mid: rgba(236, 231, 220, 0.25);
+        --hairline-lo: rgba(236, 231, 220, 0.11);
+      }
+
       html,
       body {
         width: 100%;
@@ -765,6 +774,9 @@ var HL = (() => {
 /* /hairline kernel */
 </script>
     <script>
+      const theme = new URLSearchParams(location.search).get("theme");
+      if (theme === "dark") document.documentElement.dataset.theme = "dark";
+
       window.hairline = (figure) => {
         const stage = document.getElementById("stage");
         const live = document.getElementById("live");

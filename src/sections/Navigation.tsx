@@ -1,49 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import Wordmark from "../components/Wordmark";
+import type { ViewId } from "../views/types";
 
-const links = [
-  { label: "Company", href: "#company" },
-  { label: "Ventures", href: "#ventures" },
-  { label: "Contact", href: "#contact" },
+const links: { label: string; view: ViewId; href: string }[] = [
+  { label: "Company", view: "company", href: "#company" },
+  { label: "Ventures", view: "ventures", href: "#ventures" },
+  { label: "Contact", view: "contact", href: "#contact" },
 ];
 
-export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
-  const [onDark, setOnDark] = useState(false);
+interface NavigationProps {
+  activeView: ViewId;
+  onNavigate: (view: ViewId) => void;
+}
+
+export default function Navigation({
+  activeView,
+  onNavigate,
+}: NavigationProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const update = () => {
-      frame = 0;
-      setScrolled(window.scrollY > 24);
-
-      let dark = false;
-      document.querySelectorAll<HTMLElement>('[data-tone="dark"]').forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 38 && rect.bottom > 38) dark = true;
-      });
-      setOnDark(dark);
-    };
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -66,6 +42,7 @@ export default function Navigation() {
     };
 
     document.addEventListener("keydown", onKeyDown);
+
     return () => {
       window.cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
@@ -78,30 +55,35 @@ export default function Navigation() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 840) setMenuOpen(false);
+      if (window.innerWidth > 760) setMenuOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const select = (view: ViewId) => {
+    setMenuOpen(false);
+    onNavigate(view);
+  };
+
   return (
     <>
-      <header
-        className={[
-          "site-header",
-          scrolled ? "is-scrolled" : "",
-          onDark ? "is-dark" : "",
-          menuOpen ? "is-open" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
+      <header className={`site-header${menuOpen ? " is-open" : ""}`}>
         <div className="site-header-inner">
-          <Wordmark onClick={() => setMenuOpen(false)} />
+          <Wordmark onClick={() => select("index")} />
 
           <nav className="desktop-nav" aria-label="Primary">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="nav-link">
+              <a
+                key={link.view}
+                href={link.href}
+                className="nav-link"
+                aria-current={activeView === link.view ? "page" : undefined}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigate(link.view);
+                }}
+              >
                 {link.label}
               </a>
             ))}
@@ -129,22 +111,20 @@ export default function Navigation() {
       <div
         id="mobile-menu"
         ref={menuRef}
-        className={[
-          "mobile-menu",
-          menuOpen ? "is-open" : "",
-          onDark ? "is-dark" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        className={`mobile-menu${menuOpen ? " is-open" : ""}`}
         aria-hidden={!menuOpen}
       >
         <nav aria-label="Mobile">
           {links.map((link, index) => (
             <a
-              key={link.href}
+              key={link.view}
               href={link.href}
               className="mobile-link"
-              onClick={() => setMenuOpen(false)}
+              aria-current={activeView === link.view ? "page" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                select(link.view);
+              }}
             >
               <span className="mobile-link-index" aria-hidden="true">
                 0{index + 1}
@@ -153,6 +133,7 @@ export default function Navigation() {
             </a>
           ))}
         </nav>
+
         <div className="mobile-menu-foot">
           <a href="mailto:justin@attiteud.com">justin@attiteud.com</a>
           <span>Independent technology company</span>
