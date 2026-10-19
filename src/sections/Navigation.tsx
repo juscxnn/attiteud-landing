@@ -1,225 +1,163 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Wordmark from "../components/Wordmark";
 
-import { useLang } from "../hooks/useLang";
-import LanguageToggle from "../components/LanguageToggle";
+const links = [
+  { label: "Company", href: "#company" },
+  { label: "Ventures", href: "#ventures" },
+  { label: "Contact", href: "#contact" },
+];
 
-interface NavigationProps {
-  onScrollTo: (id: string) => void;
-}
-
-export default function Navigation({ onScrollTo }: NavigationProps) {
-  const { t } = useLang();
+export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [inDark, setInDark] = useState(false);
+  const [onDark, setOnDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 100);
-      setMenuOpen(false);
+    let frame = 0;
 
-      const darkEls = document.querySelectorAll("[data-dark-section]");
-      let isInDark = false;
-      const center = y + window.innerHeight / 2;
-      darkEls.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        const top = r.top + y;
-        const bottom = top + r.height;
-        if (center >= top && center <= bottom) isInDark = true;
+    const update = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 24);
+
+      let dark = false;
+      document.querySelectorAll<HTMLElement>('[data-tone="dark"]').forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 38 && rect.bottom > 38) dark = true;
       });
-      setInDark(isInDark);
+      setOnDark(dark);
     };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
-  const links = [
-    { label: t("nav_work"), id: "clients" },
-    { label: t("nav_contact"), id: "contact" },
-  ];
+  useEffect(() => {
+    if (!menuOpen) return;
 
-  const textColor = inDark ? "#e8e4dc" : "#1e1c18";
-  const bgColor = scrolled
-    ? inDark
-      ? "rgba(10, 10, 10, 0.82)"
-      : "rgba(240, 235, 227, 0.85)"
-    : "transparent";
+    const previousOverflow = document.body.style.overflow;
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
+    const toggle = toggleRef.current;
+
+    document.body.style.overflow = "hidden";
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+
+    const focusFrame = window.requestAnimationFrame(() => {
+      menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    });
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+      document.removeEventListener("keydown", onKeyDown);
+      toggle?.focus();
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 840) setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 flex items-center justify-between transition-all duration-500"
-      style={{
-        zIndex: 100,
-        height: 72,
-        paddingLeft: "clamp(20px, 4vw, 64px)",
-        paddingRight: "clamp(20px, 4vw, 64px)",
-        backgroundColor: menuOpen
-          ? inDark
-            ? "rgba(10, 10, 10, 0.96)"
-            : "rgba(240, 235, 227, 0.98)"
-          : bgColor,
-        backdropFilter: scrolled || menuOpen ? "blur(20px) saturate(160%)" : "none",
-        WebkitBackdropFilter: scrolled || menuOpen ? "blur(20px) saturate(160%)" : "none",
-      }}
-    >
-      <button
-        onClick={() => { onScrollTo("top"); setMenuOpen(false); }}
-        className="transition-opacity duration-300 hover:opacity-50"
-        style={{
-          color: textColor,
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          fontFamily: "'Times New Roman', Times, serif",
-          fontSize: 26,
-          letterSpacing: "0.02em",
-          display: "flex",
-          alignItems: "center",
-          zIndex: 102,
-        }}
+    <>
+      <header
+        className={[
+          "site-header",
+          scrolled ? "is-scrolled" : "",
+          onDark ? "is-dark" : "",
+          menuOpen ? "is-open" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
-        <span style={{ fontSize: 30, lineHeight: 1, marginRight: 3 }}>✽</span>
-        <span>Attiteud</span>
-        <span style={{ opacity: 0.5 }}>.</span>
-      </button>
+        <div className="site-header-inner">
+          <Wordmark onClick={() => setMenuOpen(false)} />
 
-      {/* Desktop links */}
-      <div className="hidden md:flex items-center" style={{ gap: 32 }}>
-        {links.map((link) => (
+          <nav className="desktop-nav" aria-label="Primary">
+            {links.map((link) => (
+              <a key={link.href} href={link.href} className="nav-link">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
           <button
-            key={link.id}
-            onClick={() => onScrollTo(link.id)}
-            className="font-sans text-sm relative group transition-opacity duration-300 hover:opacity-50"
-            style={{ color: textColor, background: "none", border: "none", cursor: "pointer", letterSpacing: "0.01em" }}
+            ref={toggleRef}
+            type="button"
+            className="menu-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((open) => !open)}
           >
-            {link.label}
-            <span
-              className="absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"
-              style={{ height: 1, backgroundColor: textColor, bottom: -2 }}
-            />
+            <span className="menu-toggle-label">
+              {menuOpen ? "Close" : "Menu"}
+            </span>
+            <span className="menu-lines" aria-hidden="true">
+              <span />
+              <span />
+            </span>
           </button>
-        ))}
-        <LanguageToggle />
-        <a
-          href="https://tidycal.com/attiteud/chat"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-sans text-sm transition-all duration-300"
-          style={{
-            padding: "10px 22px",
-            backgroundColor: inDark ? "#e8e4dc" : "#1e1c18",
-            color: inDark ? "#1e1c18" : "#f0ebe3",
-            border: "none",
-            cursor: "pointer",
-            letterSpacing: "0.01em",
-            textDecoration: "none",
-            display: "inline-block",
-          }}
-        >
-          {t("nav_cta")}
-        </a>
-      </div>
-
-      {/* Mobile hamburger */}
-      <button
-        className="md:hidden flex flex-col justify-center"
-        onClick={() => setMenuOpen(!menuOpen)}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          gap: 5,
-          padding: 8,
-          zIndex: 102,
-        }}
-        aria-label="Toggle menu"
-      >
-        <span
-          style={{
-            width: 22,
-            height: 1.5,
-            backgroundColor: textColor,
-            transition: "all 0.3s ease",
-            transform: menuOpen ? "rotate(45deg) translateY(6.5px)" : "none",
-          }}
-        />
-        <span
-          style={{
-            width: 22,
-            height: 1.5,
-            backgroundColor: textColor,
-            transition: "all 0.3s ease",
-            opacity: menuOpen ? 0 : 1,
-          }}
-        />
-        <span
-          style={{
-            width: 22,
-            height: 1.5,
-            backgroundColor: textColor,
-            transition: "all 0.3s ease",
-            transform: menuOpen ? "rotate(-45deg) translateY(-6.5px)" : "none",
-          }}
-        />
-      </button>
-
-      {/* Mobile menu overlay */}
-      {menuOpen && (
-        <div
-          className="md:hidden flex flex-col items-center justify-center"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 101,
-            backgroundColor: inDark ? "rgba(10, 10, 10, 0.98)" : "rgba(240, 235, 227, 0.98)",
-            backdropFilter: "blur(20px)",
-            gap: 32,
-          }}
-        >
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => { onScrollTo(link.id); setMenuOpen(false); }}
-              className="font-sans transition-opacity duration-300 hover:opacity-60"
-              style={{
-                color: textColor,
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontSize: 22,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {link.label}
-            </button>
-          ))}
-          <a
-            href="https://tidycal.com/attiteud/chat"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans transition-all duration-300"
-            style={{
-              padding: "12px 32px",
-              backgroundColor: inDark ? "#e8e4dc" : "#1e1c18",
-              color: inDark ? "#1e1c18" : "#f0ebe3",
-              border: "none",
-              cursor: "pointer",
-              fontSize: 16,
-              letterSpacing: "0.01em",
-              textDecoration: "none",
-              display: "inline-block",
-              marginTop: 8,
-            }}
-          >
-            {t("nav_cta")}
-          </a>
-          <div style={{ marginTop: 16 }}>
-            <LanguageToggle />
-          </div>
         </div>
-      )}
-    </nav>
+      </header>
+
+      <div
+        id="mobile-menu"
+        ref={menuRef}
+        className={[
+          "mobile-menu",
+          menuOpen ? "is-open" : "",
+          onDark ? "is-dark" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        aria-hidden={!menuOpen}
+      >
+        <nav aria-label="Mobile">
+          {links.map((link, index) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="mobile-link"
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="mobile-link-index" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <span>{link.label}</span>
+            </a>
+          ))}
+        </nav>
+        <div className="mobile-menu-foot">
+          <a href="mailto:justin@attiteud.com">justin@attiteud.com</a>
+          <span>Independent technology company</span>
+        </div>
+      </div>
+    </>
   );
 }
