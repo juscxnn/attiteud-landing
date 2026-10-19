@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import Wordmark from "../components/Wordmark";
 import type { ViewId } from "../views/types";
 
-const links: { label: string; view: ViewId; href: string }[] = [
-  { label: "Company", view: "company", href: "#company" },
-  { label: "Ventures", view: "ventures", href: "#ventures" },
-  { label: "Contact", view: "contact", href: "#contact" },
+const views: { id: ViewId; label: string }[] = [
+  { id: "index", label: "Index" },
+  { id: "company", label: "Company" },
+  { id: "ventures", label: "Ventures" },
+  { id: "contact", label: "Contact" },
 ];
 
 interface NavigationProps {
@@ -17,125 +18,109 @@ export default function Navigation({
   activeView,
   onNavigate,
 }: NavigationProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const islandRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!menuOpen) return;
+  const current =
+    views.find((view) => view.id === activeView)?.label ?? "Index";
 
-    const previousOverflow = document.body.style.overflow;
+  useEffect(() => {
+    if (!open) return;
+
     const main = document.querySelector("main");
     const footer = document.querySelector("footer");
     const toggle = toggleRef.current;
 
-    document.body.style.overflow = "hidden";
     main?.setAttribute("inert", "");
     footer?.setAttribute("inert", "");
 
     const focusFrame = window.requestAnimationFrame(() => {
-      menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+      const activeLink = islandRef.current?.querySelector<HTMLAnchorElement>(
+        '.island-link[aria-current="page"]'
+      );
+      const firstLink =
+        islandRef.current?.querySelector<HTMLAnchorElement>(".island-link");
+      (activeLink ?? firstLink)?.focus();
     });
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") setOpen(false);
     };
 
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.cancelAnimationFrame(focusFrame);
-      document.body.style.overflow = previousOverflow;
       main?.removeAttribute("inert");
       footer?.removeAttribute("inert");
       document.removeEventListener("keydown", onKeyDown);
       toggle?.focus();
     };
-  }, [menuOpen]);
-
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth > 760) setMenuOpen(false);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [open]);
 
   const select = (view: ViewId) => {
-    setMenuOpen(false);
+    setOpen(false);
     onNavigate(view);
   };
 
   return (
-    <>
-      <header className={`site-header${menuOpen ? " is-open" : ""}`}>
-        <div className="site-header-inner">
-          <Wordmark onClick={() => select("index")} />
-
-          <nav className="desktop-nav" aria-label="Primary">
-            {links.map((link) => (
-              <a
-                key={link.view}
-                href={link.href}
-                className="nav-link"
-                aria-current={activeView === link.view ? "page" : undefined}
-                onClick={(event) => {
-                  event.preventDefault();
-                  onNavigate(link.view);
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <button
-            ref={toggleRef}
-            type="button"
-            className="menu-toggle"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span className="menu-toggle-label">
-              {menuOpen ? "Close" : "Menu"}
-            </span>
-            <span className="menu-lines" aria-hidden="true">
-              <span />
-              <span />
-            </span>
-          </button>
-        </div>
-      </header>
+    <header className="site-header">
+      <div className="site-header-inner">
+        <Wordmark onClick={() => select("index")} />
+      </div>
 
       <div
-        id="mobile-menu"
-        ref={menuRef}
-        className={`mobile-menu${menuOpen ? " is-open" : ""}`}
-        aria-hidden={!menuOpen}
+        ref={islandRef}
+        className={`nav-island${open ? " is-open" : ""}`}
       >
-        <nav aria-label="Mobile">
-          {links.map((link) => (
+        <button
+          ref={toggleRef}
+          type="button"
+          className="island-toggle"
+          aria-expanded={open}
+          aria-controls="island-menu"
+          aria-label={`${open ? "Close" : "Open"} navigation, ${current}`}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="island-dot" aria-hidden="true" />
+          <span className="island-current">{current}</span>
+          <span className="island-icon" aria-hidden="true" />
+        </button>
+
+        <div
+          id="island-menu"
+          className="island-menu"
+          aria-hidden={!open}
+          inert={!open}
+        >
+          {views.map((view) => (
             <a
-              key={link.view}
-              href={link.href}
-              className="mobile-link"
-              aria-current={activeView === link.view ? "page" : undefined}
+              key={view.id}
+              href={view.id === "index" ? "#index" : `#${view.id}`}
+              className="island-link"
+              aria-current={activeView === view.id ? "page" : undefined}
               onClick={(event) => {
                 event.preventDefault();
-                select(link.view);
+                select(view.id);
               }}
             >
-              {link.label}
+              <span>{view.label}</span>
+              <span className="island-link-mark" aria-hidden="true" />
             </a>
           ))}
-        </nav>
-
-        <div className="mobile-menu-foot">
-          <a href="mailto:justin@attiteud.com">justin@attiteud.com</a>
-          <span>Independent technology company</span>
         </div>
       </div>
-    </>
+
+      {open && (
+        <button
+          type="button"
+          className="island-backdrop"
+          tabIndex={-1}
+          aria-label="Close navigation"
+          onClick={() => setOpen(false)}
+        />
+      )}
+    </header>
   );
 }

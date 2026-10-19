@@ -4,7 +4,7 @@
 
 Corporate site for an independent technology company building intelligent software, infrastructure, and businesses. Gatekeep, an AI-native operating system for venture, is the flagship venture.
 
-The site is a fixed, no-scroll dark “dictionary entry”: the landing view is the word entry for `attiteud`, and Company / Ventures / Contact are one-screen views switched in place. The backdrop is a live subgrid — click to place grid-aligned boxes and drag them across subgrid cells.
+The site is a fixed, no-scroll dark “dictionary entry”: the landing view is the word entry for `attiteud`, and Company / Ventures / Contact are one-screen views switched in place. The backdrop is a live subgrid — click to place grid-aligned boxes and drag them across subgrid cells. Navigation is a floating liquid-glass island at the top right.
 
 ## Stack
 
