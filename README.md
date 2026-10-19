@@ -40,7 +40,9 @@ vercel.json     Redirects, SPA rewrite, security headers
 
 ## Deployment
 
-Production is hosted on Vercel as the `attiteud-landing` project and served at `https://attiteud.com`. Deploy from the repository root with:
+Production is hosted on Vercel as the `attiteud-landing` project and served at `https://attiteud.com`. Pushes to `main` deploy automatically through the Vercel Git integration.
+
+For a manual deployment from the repository root:
 
 ```bash
 vercel --prod
