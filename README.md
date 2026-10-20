@@ -1,20 +1,20 @@
 # Attiteud
 
-**Software that acts.**
+**A small thing that makes a big difference.**
 
-Attiteud is an independent technology company building agentic software, infrastructure, and ventures. Gatekeep is its first public venture.
+Attiteud is an independent technology company.
 
-The site is a single scrollable statement: a live agent field, a thesis on agency, the stack we build, Gatekeep, the company, and contact. A black frame, bone field, and signal orange carry the identity. It is fully prerendered at build time and hydrated on the client.
+The site is one fixed screen: a dictionary entry for `at·ti·teud`, paired with a hairline operating dial. There is no navigation, no scrolling, and no second view. The dial carries **Develop / Own / Operate** around the Attiteud asterisk, cycling through the three steps.
 
 ## Stack
 
 - React 19 + TypeScript
 - Vite
-- Custom CSS with self-hosted Archivo and IBM Plex Mono
-- Canvas agent field, SVG system diagram and Gatekeep signal map
-- `react-dom/server` prerendering, no routing dependencies
+- Custom CSS with self-hosted Newsreader and IBM Plex Mono
+- SVG and CSS motion, no animation dependencies
+- `react-dom/server` prerendering
 
-Archivo and IBM Plex are licensed under the SIL Open Font License. The licenses are included at `public/fonts/ARCHIVO-OFL.txt` and `public/fonts/LICENSE.txt`.
+Newsreader and IBM Plex are licensed under the SIL Open Font License. The licenses are included at `public/fonts/NEWSREADER-OFL.txt` and `public/fonts/LICENSE.txt`.
 
 ## Development
 
@@ -31,20 +31,19 @@ npm run build
 npm run preview
 ```
 
-`npm run build` type-checks, builds the client, then runs `scripts/prerender.mjs` to render the site into `dist/index.html`. The client hydrates that markup. Confirm the built HTML contains the page content, not only the root placeholder.
+`npm run build` type-checks, builds the client, then runs `scripts/prerender.mjs` to render the site into `dist/index.html`. The client hydrates that markup.
 
-Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Verify the live agent field, the orange menu, keyboard focus, reduced motion, the system diagram, and the Gatekeep link.
+Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Confirm the page never scrolls, the operating dial cycles, clicking a step selects it, and reduced motion stops the dial.
 
 ## Structure
 
 ```text
 src/
-  sections/     Header, Hero, Thesis, Systems, Venture, Company, Contact, Footer
-  components/   Mark, Wordmark, SectionIndex, Reveal, AgentField, SystemDiagram, SignalMap
-  App.tsx       Page composition
+  components/   Asterisk, OperatingDial
+  App.tsx       The single-screen entry and operating model
   entry-server.tsx  SSR entry used by the prerender script
   main.tsx      Hydration / client entry
-  index.css     Bone, ink and signal system, responsive layout and motion
+  index.css     Deep-green dictionary layout, dial and responsive fit
 scripts/
   prerender.mjs Injects the rendered page into dist/index.html
 public/         Favicons, fonts, licenses, robots.txt, sitemap.xml, social image
