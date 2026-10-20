@@ -80,10 +80,17 @@ export default function Navigation({
           className="island-toggle"
           aria-expanded={open}
           aria-controls="island-menu"
-          aria-label={`${open ? "Close" : "Open"} navigation, ${current}`}
+          aria-label={`${open ? "Close" : "Open"} menu, ${current}`}
           onClick={() => setOpen((value) => !value)}
         >
-          <span className="island-dot" aria-hidden="true" />
+          <span className="island-menu-mark" aria-hidden="true">
+            <span />
+            <span />
+          </span>
+          <span className="island-menu-label">Menu</span>
+          <span className="island-separator" aria-hidden="true">
+            /
+          </span>
           <span className="island-current">{current}</span>
           <span className="island-icon" aria-hidden="true" />
         </button>

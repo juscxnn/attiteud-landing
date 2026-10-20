@@ -22,6 +22,7 @@ export default function Cycle() {
 
       <svg className="cycle-stage cycle-full" viewBox="0 0 100 100" fill="none">
         <circle className="cycle-complete" cx="50" cy="50" r="36" />
+        <circle className="cycle-full-core" cx="50" cy="50" r="3.5" />
       </svg>
     </div>
   );

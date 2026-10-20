@@ -126,9 +126,9 @@ export default function GridBackdrop() {
     function draw() {
       ctx.clearRect(0, 0, width, height);
 
-      drawLines(FINE, "rgba(236, 231, 220, 0.035)");
-      drawLines(SUB, "rgba(236, 231, 220, 0.08)");
-      drawLines(SUPER, "rgba(236, 231, 220, 0.14)");
+      drawLines(FINE, "rgba(236, 231, 220, 0.028)");
+      drawLines(SUB, "rgba(236, 231, 220, 0.065)");
+      drawLines(SUPER, "rgba(236, 231, 220, 0.12)");
 
       if (hover && !drag) {
         ctx.fillStyle = "rgba(232, 168, 124, 0.03)";
@@ -140,13 +140,13 @@ export default function GridBackdrop() {
       for (const box of boxes) {
         const active = drag?.id === box.id;
         ctx.fillStyle = box.accent
-          ? "rgba(232, 168, 124, 0.06)"
-          : "rgba(236, 231, 220, 0.04)";
+          ? "rgba(232, 168, 124, 0.07)"
+          : "rgba(236, 231, 220, 0.05)";
         ctx.strokeStyle = active
-          ? "rgba(232, 168, 124, 0.75)"
+          ? "rgba(232, 168, 124, 0.8)"
           : box.accent
-            ? "rgba(232, 168, 124, 0.28)"
-            : "rgba(236, 231, 220, 0.18)";
+            ? "rgba(232, 168, 124, 0.32)"
+            : "rgba(236, 231, 220, 0.22)";
         ctx.lineWidth = 1;
         ctx.fillRect(box.x + 0.5, box.y + 0.5, box.w - 1, box.h - 1);
         ctx.strokeRect(box.x + 0.5, box.y + 0.5, box.w - 1, box.h - 1);

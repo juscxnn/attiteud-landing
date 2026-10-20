@@ -25,6 +25,13 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const titles: Record<ViewId, string> = {
+      index: "Attiteud — a small thing that makes a big difference.",
+      company: "Company — Attiteud",
+      ventures: "Ventures — Attiteud",
+      contact: "Contact — Attiteud",
+    };
+    document.title = titles[view];
     window.scrollTo(0, 0);
 
     if (isFirstRender.current) {
