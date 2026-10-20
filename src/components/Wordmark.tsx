@@ -1,20 +1,13 @@
 interface WordmarkProps {
   className?: string;
-  onClick?: () => void;
 }
 
-export default function Wordmark({ className = "", onClick }: WordmarkProps) {
+export default function Wordmark({ className = "" }: WordmarkProps) {
   return (
     <a
-      href="#index"
+      href="#top"
       className={`wordmark ${className}`.trim()}
-      aria-label="Attiteud, open the entry"
-      onClick={(event) => {
-        if (onClick) {
-          event.preventDefault();
-          onClick();
-        }
-      }}
+      aria-label="Attiteud, back to top"
     >
       <span className="wordmark-mark" aria-hidden="true">
         ✽
