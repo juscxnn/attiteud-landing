@@ -1,12 +1,18 @@
 import RelayFigure from "../components/RelayFigure";
 import Reveal from "../components/Reveal";
+import SectionLabel from "../components/SectionLabel";
 
 export default function Venture() {
   return (
-    <section id="ventures" className="section venture" aria-labelledby="venture-title">
+    <section
+      id="ventures"
+      className="section venture"
+      aria-labelledby="venture-title"
+    >
+      <div className="venture-glow" aria-hidden="true" />
       <div className="container">
         <Reveal>
-          <p className="eyebrow">Selected venture</p>
+          <SectionLabel number="03" label="Gatekeep" />
         </Reveal>
 
         <div className="venture-grid">
@@ -37,7 +43,11 @@ export default function Venture() {
 
           <Reveal delay={120}>
             <div className="venture-figure">
-              <RelayFigure />
+              <RelayFigure intensity={0.85} />
+              <div className="venture-caption">
+                <span className="venture-caption-dot" aria-hidden="true" />
+                <span>Shared record / Live system</span>
+              </div>
             </div>
           </Reveal>
         </div>

@@ -7,10 +7,13 @@ const links = [
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
+type HeaderTheme = "dark" | "light";
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<HeaderTheme>("dark");
   const menuRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -32,6 +35,24 @@ export default function Header() {
       });
 
       setActive(current);
+
+      const headerHeight =
+        document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 84;
+      const probe = window.scrollY + headerHeight;
+      let nextTheme: HeaderTheme = "dark";
+
+      document
+        .querySelectorAll<HTMLElement>("[data-header-theme]")
+        .forEach((section) => {
+          const top = section.getBoundingClientRect().top + window.scrollY;
+          const bottom = top + section.offsetHeight;
+          if (top <= probe && bottom > probe) {
+            nextTheme =
+              section.dataset.headerTheme === "light" ? "light" : "dark";
+          }
+        });
+
+      setTheme(nextTheme);
     };
 
     const onScroll = () => {
@@ -102,6 +123,7 @@ export default function Header() {
         className={[
           "site-header",
           scrolled ? "is-scrolled" : "",
+          theme === "light" ? "is-light" : "",
           menuOpen ? "is-open" : "",
         ]
           .filter(Boolean)

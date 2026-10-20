@@ -1,13 +1,20 @@
-import Asterisk from "../components/Asterisk";
+import HorizonMark from "../components/HorizonMark";
 
 export default function Hero() {
   return (
     <section id="top" className="hero" aria-labelledby="hero-title">
-      <Asterisk className="hero-asterisk" />
+      <div className="hero-scene" aria-hidden="true">
+        <div className="hero-sky" />
+        <div className="hero-glow" />
+        <div className="hero-horizon" />
+        <div className="hero-ground" />
+        <div className="hero-point" />
+        <div className="hero-grain" />
+      </div>
 
       <div className="container hero-inner">
         <p className="hero-kicker">
-          <span className="status-dot" aria-hidden="true" />
+          <HorizonMark className="hero-kicker-mark" />
           Independent technology company
         </p>
 
@@ -17,15 +24,20 @@ export default function Hero() {
             <br />
             built deliberately<span className="accent">.</span>
           </h1>
+        </div>
 
-          <div className="hero-aside">
+        <div className="hero-bottom">
+          <div className="hero-intro">
             <p>
               Attiteud develops, owns, and operates intelligent software,
-              infrastructure, and businesses. Gatekeep is its first public
-              venture.
+              infrastructure, and businesses.
             </p>
+          </div>
+
+          <div className="hero-venture">
+            <span className="mono-micro">First public venture</span>
             <a
-              className="arrow-link"
+              className="hero-venture-link"
               href="https://gatekeep.vc"
               target="_blank"
               rel="noopener noreferrer"
