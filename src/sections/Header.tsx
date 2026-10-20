@@ -2,18 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import Wordmark from "../components/Wordmark";
 
 const links = [
+  { label: "Systems", href: "#systems", id: "systems" },
+  { label: "Venture", href: "#venture", id: "venture" },
   { label: "Company", href: "#company", id: "company" },
-  { label: "Ventures", href: "#ventures", id: "ventures" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
-type HeaderTheme = "dark" | "light";
-
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<HeaderTheme>("dark");
   const menuRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -22,9 +19,7 @@ export default function Header() {
 
     const update = () => {
       frame = 0;
-      setScrolled(window.scrollY > 24);
-
-      const marker = window.innerHeight * 0.35;
+      const marker = window.innerHeight * 0.32;
       let current = "";
 
       links.forEach((link) => {
@@ -35,24 +30,6 @@ export default function Header() {
       });
 
       setActive(current);
-
-      const headerHeight =
-        document.querySelector<HTMLElement>(".site-header")?.offsetHeight ?? 84;
-      const probe = window.scrollY + headerHeight;
-      let nextTheme: HeaderTheme = "dark";
-
-      document
-        .querySelectorAll<HTMLElement>("[data-header-theme]")
-        .forEach((section) => {
-          const top = section.getBoundingClientRect().top + window.scrollY;
-          const bottom = top + section.offsetHeight;
-          if (top <= probe && bottom > probe) {
-            nextTheme =
-              section.dataset.headerTheme === "light" ? "light" : "dark";
-          }
-        });
-
-      setTheme(nextTheme);
     };
 
     const onScroll = () => {
@@ -86,8 +63,8 @@ export default function Header() {
     const focusFrame = window.requestAnimationFrame(() => {
       const menu = menuRef.current;
       const initial =
-        menu?.querySelector<HTMLAnchorElement>(".mobile-link.is-active") ??
-        menu?.querySelector<HTMLAnchorElement>(".mobile-link");
+        menu?.querySelector<HTMLAnchorElement>(".menu-link.is-active") ??
+        menu?.querySelector<HTMLAnchorElement>(".menu-link");
       initial?.focus();
     });
 
@@ -117,17 +94,24 @@ export default function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const handleMenuNavigate = (href: string) => {
+    setMenuOpen(false);
+    const id = href.startsWith("#") ? href.slice(1) : "";
+
+    window.requestAnimationFrame(() => {
+      const heading = document
+        .getElementById(id)
+        ?.querySelector<HTMLElement>("h2");
+      if (!heading) return;
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    });
+  };
+
   return (
     <>
       <header
-        className={[
-          "site-header",
-          scrolled ? "is-scrolled" : "",
-          theme === "light" ? "is-light" : "",
-          menuOpen ? "is-open" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        className={`site-header${menuOpen ? " is-open" : ""}`}
       >
         <div className="site-header-inner">
           <Wordmark />
@@ -168,28 +152,34 @@ export default function Header() {
         id="mobile-menu"
         ref={menuRef}
         className={`mobile-menu${menuOpen ? " is-open" : ""}`}
-        aria-label="Mobile"
+        aria-label="Menu"
         aria-hidden={!menuOpen}
         inert={!menuOpen}
       >
-        <div className="mobile-menu-links">
-          {links.map((link) => (
+        <div className="menu-links">
+          {links.map((link, index) => (
             <a
               key={link.id}
               href={link.href}
-              className={`mobile-link${active === link.id ? " is-active" : ""}`}
+              className={`menu-link${active === link.id ? " is-active" : ""}`}
               aria-current={active === link.id ? "location" : undefined}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => handleMenuNavigate(link.href)}
             >
+              <span className="menu-link-index">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <span>{link.label}</span>
-              <span className="mobile-link-arrow" aria-hidden="true">
+              <span className="menu-link-arrow" aria-hidden="true">
                 ↗
               </span>
             </a>
           ))}
         </div>
-        <div className="mobile-menu-foot">
-          <a href="mailto:justin@attiteud.com">justin@attiteud.com</a>
+
+        <div className="menu-foot">
+          <a href="mailto:justin@attiteud.com">
+            justin@attiteud.com
+          </a>
           <span>Independent technology company</span>
         </div>
       </nav>

@@ -1,24 +1,23 @@
-import RelayFigure from "../components/RelayFigure";
 import Reveal from "../components/Reveal";
-import SectionLabel from "../components/SectionLabel";
+import SectionIndex from "../components/SectionIndex";
+import SignalMap from "../components/SignalMap";
 
 export default function Venture() {
   return (
     <section
-      id="ventures"
-      className="section venture"
+      id="venture"
+      className="section section-ink venture"
       aria-labelledby="venture-title"
     >
-      <div className="venture-glow" aria-hidden="true" />
       <div className="container">
         <Reveal>
-          <SectionLabel number="03" label="Gatekeep" />
+          <SectionIndex number="03" label="Venture" />
         </Reveal>
 
         <div className="venture-grid">
           <Reveal>
             <div className="venture-copy">
-              <h2 id="venture-title" className="venture-name">
+              <h2 id="venture-title" className="venture-title">
                 Gatekeep
               </h2>
               <p className="venture-descriptor">
@@ -30,24 +29,22 @@ export default function Venture() {
                 record that compounds.
               </p>
               <a
-                className="arrow-link"
+                className="text-link"
                 href="https://gatekeep.vc"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Visit Gatekeep <span aria-hidden="true">↗</span>
               </a>
-              <p className="venture-note">Developed and operated by Attiteud.</p>
+              <p className="mono-label venture-note">
+                First public venture / Developed and operated by Attiteud
+              </p>
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="venture-figure">
-              <RelayFigure intensity={0.85} />
-              <div className="venture-caption">
-                <span className="venture-caption-dot" aria-hidden="true" />
-                <span>Shared record / Live system</span>
-              </div>
+            <div className="venture-map">
+              <SignalMap />
             </div>
           </Reveal>
         </div>

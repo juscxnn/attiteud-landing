@@ -34,7 +34,7 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -7% 0px" }
     );
 
     observer.observe(element);
@@ -44,7 +44,7 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={className}
+      className={`reveal ${className}`.trim()}
       data-reveal
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >

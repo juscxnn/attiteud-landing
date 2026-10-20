@@ -1,20 +1,20 @@
 # Attiteud
 
-**The future is built deliberately.**
+**Software that acts.**
 
-Corporate site for an independent technology company building intelligent software, infrastructure, and businesses. Gatekeep, an AI-native operating system for venture, is the first public venture.
+Attiteud is an independent technology company building agentic software, infrastructure, and ventures. Gatekeep is its first public venture.
 
-The site is a single, scrollable editorial page: a cinematic horizon, a bone-paper manifesto, the company, its focus, Gatekeep, independence, and contact. The page alternates paper and near-black fields; the fixed header inverts to match the section beneath it. It is fully prerendered at build time and hydrated on the client.
+The site is a single scrollable statement: a live agent field, a thesis on agency, the stack we build, Gatekeep, the company, and contact. A black frame, bone field, and signal orange carry the identity. It is fully prerendered at build time and hydrated on the client.
 
 ## Stack
 
 - React 19 + TypeScript
 - Vite
-- Custom CSS with self-hosted Bodoni Moda and IBM Plex Sans / Mono
-- `@lucasmarkes/hairline` for the Gatekeep Relay figure
+- Custom CSS with self-hosted Archivo and IBM Plex Mono
+- Canvas agent field, SVG system diagram and Gatekeep signal map
 - `react-dom/server` prerendering, no routing dependencies
 
-Bodoni Moda and IBM Plex are licensed under the SIL Open Font License. The licenses are included at `public/fonts/BODONI-MODA-OFL.txt` and `public/fonts/LICENSE.txt`. Hairline is MIT licensed; see `public/hairline-license.txt`.
+Archivo and IBM Plex are licensed under the SIL Open Font License. The licenses are included at `public/fonts/ARCHIVO-OFL.txt` and `public/fonts/LICENSE.txt`.
 
 ## Development
 
@@ -33,18 +33,18 @@ npm run preview
 
 `npm run build` type-checks, builds the client, then runs `scripts/prerender.mjs` to render the site into `dist/index.html`. The client hydrates that markup. Confirm the built HTML contains the page content, not only the root placeholder.
 
-Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Verify the mobile menu, the header’s light/dark inversion at paper boundaries, keyboard focus, reduced motion, and the Gatekeep link.
+Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Verify the live agent field, the orange menu, keyboard focus, reduced motion, the system diagram, and the Gatekeep link.
 
 ## Structure
 
 ```text
 src/
-  sections/     Header, Hero, Manifesto, Company, Focus, Venture, Independence, Contact, Footer
-  components/   Wordmark, HorizonMark, SectionLabel, Reveal, RelayFigure
+  sections/     Header, Hero, Thesis, Systems, Venture, Company, Contact, Footer
+  components/   Mark, Wordmark, SectionIndex, Reveal, AgentField, SystemDiagram, SignalMap
   App.tsx       Page composition
   entry-server.tsx  SSR entry used by the prerender script
   main.tsx      Hydration / client entry
-  index.css     Bone-and-ink design system, hero horizon and responsive layout
+  index.css     Bone, ink and signal system, responsive layout and motion
 scripts/
   prerender.mjs Injects the rendered page into dist/index.html
 public/         Favicons, fonts, licenses, robots.txt, sitemap.xml, social image
