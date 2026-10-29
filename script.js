@@ -4,7 +4,7 @@
 
   if (!page || !layer) return;
 
-  const SUBGRID = 96;
+  const CELL = 24;
 
   const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,10 +20,10 @@
   };
 
   const snapDown = (value, origin) =>
-    origin + Math.floor((value - origin) / SUBGRID) * SUBGRID;
+    origin + Math.floor((value - origin) / CELL) * CELL;
 
   const snapNearest = (value, origin) =>
-    origin + Math.round((value - origin) / SUBGRID) * SUBGRID;
+    origin + Math.round((value - origin) / CELL) * CELL;
 
   const makeBlock = (left, top, width, height) => {
     const block = document.createElement("span");
@@ -56,16 +56,12 @@
   const addAt = (clientX, clientY) => {
     const rect = page.getBoundingClientRect();
     const pads = getPads();
-    const contentWidth = Math.max(SUBGRID, rect.width - pads.x * 2);
-    const contentHeight = Math.max(SUBGRID, rect.height - pads.y * 2);
-    const maxWidthUnits = Math.max(1, Math.floor(contentWidth / SUBGRID));
-    const maxHeightUnits = Math.max(1, Math.floor(contentHeight / SUBGRID));
-    const widthUnits = randomUnits(maxWidthUnits);
+    const widthUnits = randomUnits(4);
     const heightUnits = Math.random() < 0.5
-      ? randomUnits(maxHeightUnits)
-      : randomUnits(Math.min(maxHeightUnits, 2));
-    const width = widthUnits * SUBGRID;
-    const height = heightUnits * SUBGRID;
+      ? randomUnits(4)
+      : randomUnits(2);
+    const width = widthUnits * CELL;
+    const height = heightUnits * CELL;
     const left = clamp(
       snapDown(clientX - rect.left, pads.x),
       0,
@@ -83,10 +79,8 @@
   const seed = () => {
     const rect = page.getBoundingClientRect();
     const pads = getPads();
-    const contentWidth = Math.max(SUBGRID, rect.width - pads.x * 2);
-    const contentHeight = Math.max(SUBGRID, rect.height - pads.y * 2);
-    const maxWidthUnits = Math.max(1, Math.floor(contentWidth / SUBGRID));
-    const maxHeightUnits = Math.max(1, Math.floor(contentHeight / SUBGRID));
+    const contentWidth = Math.max(CELL, rect.width - pads.x * 2);
+    const contentHeight = Math.max(CELL, rect.height - pads.y * 2);
     const count = window.innerWidth < 700 ? 8 : 14;
     const entry = document.querySelector(".entry");
     const entryRect = entry?.getBoundingClientRect();
@@ -110,28 +104,25 @@
         heightUnits = 1;
       } else if (i === 1) {
         widthUnits = 1;
-        heightUnits = Math.min(2, maxHeightUnits);
+        heightUnits = 2;
       } else if (i === 2) {
-        widthUnits = Math.min(2, maxWidthUnits);
+        widthUnits = 2;
         heightUnits = 1;
       } else {
-        widthUnits = randomUnits(maxWidthUnits);
+        widthUnits = randomUnits(4);
         heightUnits = Math.random() < 0.45
           ? widthUnits
-          : randomUnits(Math.min(maxHeightUnits, 3));
+          : randomUnits(2);
       }
 
-      widthUnits = Math.min(widthUnits, maxWidthUnits);
-      heightUnits = Math.min(heightUnits, maxHeightUnits);
-
-      const width = widthUnits * SUBGRID;
-      const height = heightUnits * SUBGRID;
-      const maxCol = Math.max(0, Math.floor((contentWidth - width) / SUBGRID));
-      const maxRow = Math.max(0, Math.floor((contentHeight - height) / SUBGRID));
+      const width = widthUnits * CELL;
+      const height = heightUnits * CELL;
+      const maxCol = Math.max(0, Math.floor((contentWidth - width) / CELL));
+      const maxRow = Math.max(0, Math.floor((contentHeight - height) / CELL));
 
       for (let attempt = 0; attempt < 60; attempt += 1) {
-        const left = pads.x + randomInt(0, maxCol) * SUBGRID;
-        const top = pads.y + randomInt(0, maxRow) * SUBGRID;
+        const left = pads.x + randomInt(0, maxCol) * CELL;
+        const top = pads.y + randomInt(0, maxRow) * CELL;
 
         if (!overlapsEntry(left, top, width, height)) {
           makeBlock(left, top, width, height);
