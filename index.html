@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#071f16" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
 
     <title>Attiteud — a small thing that makes a big difference.</title>
     <meta
@@ -14,10 +14,7 @@
     <meta name="author" content="Attiteud" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://attiteud.com/" />
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="256x256" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" href="data:," />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://attiteud.com/" />
@@ -28,24 +25,14 @@
     />
     <meta property="og:site_name" content="Attiteud" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://attiteud.com/og.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Attiteud — a small thing that makes a big difference."
-    />
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="https://attiteud.com/" />
     <meta name="twitter:title" content="Attiteud — a small thing that makes a big difference." />
     <meta
       name="twitter:description"
       content="Attiteud is an independent technology company. A small thing that makes a big difference."
     />
-    <meta name="twitter:image" content="https://attiteud.com/og.png" />
-    <meta name="twitter:image:alt" content="Attiteud — a small thing that makes a big difference." />
 
     <link
       rel="preload"
@@ -56,11 +43,12 @@
     />
     <link
       rel="preload"
-      href="/fonts/ibm-plex-mono-latin.woff2"
+      href="/fonts/newsreader-italic-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
+    <link rel="stylesheet" href="/styles.css" />
 
     <script type="application/ld+json">
       {
@@ -68,14 +56,52 @@
         "@type": "Organization",
         "name": "Attiteud",
         "url": "https://attiteud.com/",
-        "logo": "https://attiteud.com/favicon.png",
         "description": "Attiteud is an independent technology company. A small thing that makes a big difference.",
         "slogan": "A small thing that makes a big difference."
       }
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="page">
+      <header class="brand">
+        <p>attiteud</p>
+      </header>
+
+      <main class="main">
+        <article class="entry" aria-labelledby="entry-title">
+          <div class="entry-topline">
+            <span>Entry 001</span>
+            <span>English</span>
+          </div>
+
+          <h1 id="entry-title" class="entry-headword" aria-label="attiteud">
+            at·ti·teud
+          </h1>
+
+          <p class="entry-pronunciation">
+            <span>/at-i-tyood/</span>
+            <span class="entry-pos">noun</span>
+          </p>
+
+          <div class="entry-definitions">
+            <p class="entry-sense entry-sense-primary">
+              <span class="entry-number" aria-hidden="true">1.</span>
+              a <em>small</em> thing that makes a <em>big</em> difference.
+            </p>
+
+            <p class="entry-origin">
+              <span class="entry-label">Origin</span>
+              a respelling of <em>attitude</em>.
+            </p>
+
+            <p class="entry-sense entry-sense-secondary">
+              <span class="entry-number" aria-hidden="true">2.</span>
+              <span class="entry-label">proper noun</span>
+              an independent technology company.
+            </p>
+          </div>
+        </article>
+      </main>
+    </div>
   </body>
 </html>
