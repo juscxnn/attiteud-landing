@@ -4,7 +4,7 @@
 
 Attiteud is an independent technology company.
 
-The site is one fixed screen: a monochrome dictionary entry for `at·ti·teud`, aligned to a translucent three-level grid. Random translucent rectangles and squares sit on the grid. Hovering each letter of the headword shifts it smoothly to strong green. Clicking an empty area adds another random block; blocks can be dragged. The email is the only link. There is no scrolling, navigation, or imagery. The page is HTML, CSS and a small vanilla script, built with Vite.
+The site is one fixed screen: a monochrome dictionary entry for `at·ti·teud`, aligned to a translucent three-level grid. Random translucent rectangles and squares sit on the 96px subgrid, including single-cell blocks. Hovering each letter of the headword shifts it smoothly to strong green. Clicking an empty area adds another random block; blocks can be dragged and snap back to the subgrid. The email is the only link. There is no scrolling, navigation, or imagery. The page is HTML, CSS and a small vanilla script, built with Vite.
 
 ## Stack
 
