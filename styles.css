@@ -68,6 +68,38 @@ em {
   padding:
     clamp(22px, 3.2vw, 48px)
     clamp(22px, 5vw, 72px);
+  background-color: #ffffff;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(11, 11, 11, 0.03) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(11, 11, 11, 0.03) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(11, 11, 11, 0.055) 0 1px,
+      transparent 1px 96px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(11, 11, 11, 0.055) 0 1px,
+      transparent 1px 96px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(11, 11, 11, 0.085) 0 1px,
+      transparent 1px 384px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(11, 11, 11, 0.085) 0 1px,
+      transparent 1px 384px
+    );
 }
 
 .brand {
@@ -94,24 +126,23 @@ em {
   max-width: 760px;
 }
 
-.entry-topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #d9d9d9;
-  color: #6c6c6c;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .entry-headword {
-  margin-top: clamp(12px, 2.2vh, 20px);
+  margin-top: 0;
   font-size: clamp(3.2rem, 8.5vw, 8.5rem);
   font-weight: 300;
   line-height: 0.88;
   letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.entry-headword span {
+  display: inline;
+  color: #0b0b0b;
+  transition: color 320ms ease;
+}
+
+.entry-headword span:hover {
+  color: #8f8f8f;
 }
 
 .entry-pronunciation {
@@ -149,13 +180,6 @@ em {
   vertical-align: super;
 }
 
-.entry-origin {
-  margin-top: clamp(18px, 3vh, 28px);
-  color: #6c6c6c;
-  font-size: 0.98rem;
-  line-height: 1.4;
-}
-
 .entry-label {
   margin-right: 0.45em;
   color: #6c6c6c;
@@ -180,13 +204,19 @@ em {
   color: #6c6c6c;
 }
 
+.entry-email {
+  display: inline-block;
+  margin-top: clamp(20px, 3.4vh, 32px);
+  padding-bottom: 2px;
+  border-bottom: 1px solid #b9b9b9;
+  color: #0b0b0b;
+  font-size: 0.98rem;
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .page {
     padding: 20px;
-  }
-
-  .entry-topline {
-    font-size: 0.58rem;
   }
 
   .entry-headword {
@@ -198,17 +228,12 @@ em {
     font-size: 1.18rem;
   }
 
-  .entry-origin,
   .entry-sense-secondary {
     font-size: 0.92rem;
   }
 }
 
 @media (max-height: 700px) {
-  .entry-origin {
-    display: none;
-  }
-
   .entry-headword {
     font-size: clamp(2.8rem, 6.8vw, 4.6rem);
   }

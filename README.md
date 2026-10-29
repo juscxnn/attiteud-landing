@@ -4,7 +4,7 @@
 
 Attiteud is an independent technology company.
 
-The site is one fixed screen: a monochrome dictionary entry for `at·ti·teud`. There is no scrolling, navigation, imagery, animation, or client-side JavaScript. The page is plain HTML and CSS, built with Vite.
+The site is one fixed screen: a monochrome dictionary entry for `at·ti·teud` on a translucent three-level grid. Hovering each letter of the headword shifts it to a lighter tone. The email is the only link. There is no scrolling, navigation, imagery, or client-side JavaScript. The page is plain HTML and CSS, built with Vite.
 
 ## Stack
 
@@ -30,7 +30,7 @@ npm run preview
 
 `npm run build` builds the static page into `dist/`. There should be no JavaScript assets in the output.
 
-Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Confirm the page never scrolls and contains no image, animation, link, or navigation.
+Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Confirm the page never scrolls, contains no image or navigation, and the only link is the email.
 
 ## Structure
 
