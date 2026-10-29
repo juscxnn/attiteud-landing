@@ -59,6 +59,7 @@ em {
 }
 
 .page {
+  cursor: crosshair;
   --pad-x: clamp(22px, 5vw, 72px);
   --pad-y: clamp(22px, 3.2vw, 48px);
   --cell: 24px;
@@ -105,9 +106,16 @@ em {
 }
 
 .brand,
-.main {
+.main,
+.entry {
   position: relative;
   z-index: 1;
+  pointer-events: none;
+}
+
+.entry-headword span,
+.entry-email {
+  pointer-events: auto;
 }
 
 .decor {
@@ -120,68 +128,19 @@ em {
 
 .block {
   position: absolute;
+  display: block;
   border: 1px solid rgba(11, 11, 11, 0.1);
-  background: rgba(11, 11, 11, 0.022);
-}
-
-.block--2,
-.block--4 {
   background: transparent;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.block--1 {
-  left: calc(var(--pad-x) + var(--cell) * 33);
-  top: calc(var(--pad-y) + var(--cell) * 5);
-  width: calc(var(--cell) * 6);
-  height: calc(var(--cell) * 6);
-}
-
-.block--2 {
-  left: calc(var(--pad-x) + var(--cell) * 36);
-  top: calc(var(--pad-y) + var(--cell) * 12);
-  width: calc(var(--cell) * 3);
-  height: calc(var(--cell) * 3);
-}
-
-.block--3 {
-  left: calc(var(--pad-x) + var(--cell) * 33);
-  top: calc(var(--pad-y) + var(--cell) * 24);
-  width: calc(var(--cell) * 4);
-  height: calc(var(--cell) * 8);
-}
-
-.block--4 {
-  left: calc(var(--pad-x) + var(--cell) * 35);
-  top: calc(var(--pad-y) + var(--cell) * 18);
-  width: calc(var(--cell) * 2);
-  height: calc(var(--cell) * 4);
-}
-
-.block--wide-1,
-.block--wide-2 {
-  display: none;
-}
-
-@media (min-width: 1200px) {
-  .block--wide-1,
-  .block--wide-2 {
-    display: block;
-  }
-
-  .block--wide-1 {
-    left: calc(var(--pad-x) + var(--cell) * 40);
-    top: calc(var(--pad-y) + var(--cell) * 8);
-    width: calc(var(--cell) * 12);
-    height: calc(var(--cell) * 3);
-    background: transparent;
-  }
-
-  .block--wide-2 {
-    left: calc(var(--pad-x) + var(--cell) * 39);
-    top: calc(var(--pad-y) + var(--cell) * 26);
-    width: calc(var(--cell) * 8);
-    height: calc(var(--cell) * 4);
-  }
+.block.is-dragging {
+  cursor: grabbing;
+  border-color: rgba(11, 11, 11, 0.24);
 }
 
 .brand {
@@ -225,7 +184,7 @@ em {
 }
 
 .entry-headword span:hover {
-  color: #145c3b;
+  color: #00a651;
 }
 
 .entry-pronunciation {
@@ -289,18 +248,13 @@ em {
 
 .entry-email {
   display: inline-block;
+  cursor: pointer;
   margin-top: clamp(20px, 3.4vh, 32px);
   padding-bottom: 2px;
   border-bottom: 1px solid #b9b9b9;
   color: #0b0b0b;
   font-size: 0.98rem;
   text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .decor {
-    display: none;
-  }
 }
 
 @media (max-width: 600px) {
