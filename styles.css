@@ -99,61 +99,6 @@ p {
   width: 100%;
   max-width: 60rem;
   text-align: center;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: landing-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 2100ms forwards;
-}
-
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: auto;
-  animation: intro-out 500ms ease 1600ms forwards;
-}
-
-.intro-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.intro-asterisk {
-  width: clamp(2.4rem, 5vw, 4rem);
-  height: clamp(2.4rem, 5vw, 4rem);
-  color: var(--accent);
-  fill: currentColor;
-  opacity: 0;
-  transform: scale(0.72) rotate(-18deg);
-  animation: intro-mark 700ms cubic-bezier(0.22, 1, 0.36, 1) 80ms forwards;
-}
-
-.intro-word {
-  display: flex;
-  align-items: baseline;
-  margin-top: clamp(16px, 2.4vh, 26px);
-  color: var(--ink);
-  font-size: clamp(3.25rem, 12vw, 8rem);
-  font-weight: 300;
-  line-height: 0.88;
-  letter-spacing: -0.055em;
-  white-space: nowrap;
-}
-
-.intro-word span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.34em);
-  filter: blur(3px);
-  animation: intro-letter 550ms cubic-bezier(0.22, 1, 0.36, 1) calc(340ms + var(--i) * 55ms) forwards;
-}
-
-.intro-period {
-  color: var(--accent);
 }
 
 .brand {
@@ -164,6 +109,7 @@ p {
   color: var(--ink);
   font-size: clamp(1.5rem, 2.2vw, 2rem);
   line-height: 1;
+  animation: brand-in 600ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
 }
 
 .asterisk {
@@ -194,6 +140,12 @@ p {
   font-weight: 300;
   line-height: 0.88;
   letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+
+.company-name span {
+  display: inline-block;
+  animation: name-letter 520ms cubic-bezier(0.22, 1, 0.36, 1) calc(450ms + var(--i) * 50ms) both;
 }
 
 .company-period {
@@ -208,6 +160,7 @@ p {
   font-weight: 300;
   line-height: 1.32;
   text-wrap: balance;
+  animation: supporting-in 600ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both;
 }
 
 .tagline-period {
@@ -220,6 +173,7 @@ p {
   align-items: center;
   gap: clamp(14px, 2vh, 20px);
   margin-top: clamp(56px, 12vh, 120px);
+  animation: supporting-in 650ms cubic-bezier(0.22, 1, 0.36, 1) 1650ms both;
 }
 
 .colophon::before {
@@ -302,32 +256,39 @@ p {
   }
 }
 
-@keyframes intro-mark {
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes intro-letter {
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes intro-out {
-  to {
+@keyframes brand-in {
+  from {
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes landing-in {
+@keyframes name-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.24em);
+  }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+}
+
+@keyframes supporting-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -342,11 +303,10 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro {
-    display: none;
-  }
-
-  .page-inner {
+  .brand,
+  .company-name span,
+  .tagline,
+  .colophon {
     opacity: 1;
     transform: none;
     animation: none;
