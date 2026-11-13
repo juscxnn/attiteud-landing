@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f3ecdf" />
 
-    <title>Attiteud — a small thing that makes a big difference.</title>
+    <title>Attiteud — A small thing that makes a big difference.</title>
     <meta
       name="description"
       content="Attiteud is an independent technology company. A small thing that makes a big difference."
@@ -14,11 +14,11 @@
     <meta name="author" content="Attiteud" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://attiteud.com/" />
-    <link rel="icon" href="data:," />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://attiteud.com/" />
-    <meta property="og:title" content="Attiteud — a small thing that makes a big difference." />
+    <meta property="og:title" content="Attiteud — A small thing that makes a big difference." />
     <meta
       property="og:description"
       content="Attiteud is an independent technology company. A small thing that makes a big difference."
@@ -28,7 +28,7 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="https://attiteud.com/" />
-    <meta name="twitter:title" content="Attiteud — a small thing that makes a big difference." />
+    <meta name="twitter:title" content="Attiteud — A small thing that makes a big difference." />
     <meta
       name="twitter:description"
       content="Attiteud is an independent technology company. A small thing that makes a big difference."
@@ -56,6 +56,7 @@
         "@type": "Organization",
         "name": "Attiteud",
         "url": "https://attiteud.com/",
+        "logo": "https://attiteud.com/favicon.svg",
         "description": "Attiteud is an independent technology company. A small thing that makes a big difference.",
         "slogan": "A small thing that makes a big difference.",
         "email": "justin@attiteud.com"
@@ -63,43 +64,26 @@
     </script>
   </head>
   <body>
-    <div class="page">
-      <div class="decor" aria-hidden="true"></div>
+    <main class="page">
+      <div class="page-inner">
+        <div class="brand" aria-hidden="true">
+          <svg class="asterisk" viewBox="0 0 32 32" focusable="false">
+            <path d="M16 3.5v25M3.5 16h25M7.15 7.15l17.7 17.7M24.85 7.15 7.15 24.85" />
+          </svg>
+          <span class="brand-letter">A<span class="brand-period">.</span></span>
+        </div>
 
-      <header class="brand">
-        <p>attiteud</p>
-      </header>
-
-      <main class="main">
-        <article class="entry" aria-labelledby="entry-title">
-          <h1 id="entry-title" class="entry-headword" aria-label="attiteud">
-            <span>a</span><span>t</span><span>·</span><span>t</span><span>i</span><span>·</span><span>t</span><span>e</span><span>u</span><span>d</span>
-          </h1>
-
-          <p class="entry-pronunciation">
-            <span>/at-i-tyood/</span>
-            <span class="entry-pos">noun</span>
+        <section class="title" aria-labelledby="company-name">
+          <h1 id="company-name" class="company-name">Attiteud</h1>
+          <p class="tagline">
+            A small thing that makes a big difference<span class="tagline-period">.</span>
           </p>
+        </section>
 
-          <div class="entry-definitions">
-            <p class="entry-sense entry-sense-primary">
-              <span class="entry-number" aria-hidden="true">1.</span>
-              a <em>small</em> thing that makes a <em>big</em> difference.
-            </p>
-
-            <p class="entry-sense entry-sense-secondary">
-              <span class="entry-number" aria-hidden="true">2.</span>
-              <span class="entry-label">proper noun</span>
-              an independent technology company.
-            </p>
-          </div>
-
-          <a class="entry-email" href="mailto:justin@attiteud.com">
-            justin@attiteud.com
-          </a>
-        </article>
-      </main>
-    </div>
-    <script type="module" src="/script.js"></script>
+        <footer class="colophon">
+          <a class="email" href="mailto:justin@attiteud.com">justin@attiteud.com</a>
+        </footer>
+      </div>
+    </main>
   </body>
 </html>

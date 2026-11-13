@@ -4,13 +4,13 @@
 
 Attiteud is an independent technology company.
 
-The site is one fixed screen: a monochrome dictionary entry for `at·ti·teud`, aligned to a translucent three-level grid. Random translucent rectangles and squares snap to the 24px fine grid, including single-cell 24px blocks. Hovering each letter of the headword shifts it smoothly to strong green. Clicking an empty area adds another random block; blocks can be dragged and snap back to the fine grid. The email is the only link. There is no scrolling, navigation, or imagery. The page is HTML, CSS and a small vanilla script, built with Vite.
+The site is one fixed paper-coloured screen: a small asterisk and serif `A.` mark, the company name, the slogan, and a single email link. There is no scrolling, navigation, imagery, or JavaScript. The page is plain HTML and CSS, built with Vite.
 
 ## Stack
 
 - Vite
 - One self-hosted typeface: Newsreader
-- Plain HTML and CSS, with a small vanilla script for the block layer
+- Plain HTML and CSS
 
 Newsreader is licensed under the SIL Open Font License. The license is included at `public/fonts/NEWSREADER-OFL.txt`.
 
@@ -28,21 +28,21 @@ npm run build
 npm run preview
 ```
 
-`npm run build` builds the page into `dist/`; the only script should be the small block interaction file.
+`npm run build` builds the page into `dist/`.
 
-Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Confirm the page never scrolls, the grid aligns with the entry, the letter hover turns strong green, clicking adds a block, dragging moves it, the email is the only link, and no images are present.
+Check at 1440×900, 1024×768, 768×1024, 390×844, 375×667, 320×568, and 844×390. Confirm the page never scrolls, the logo, name, slogan, and email all fit, the email is the only link, and the favicon loads.
 
 ## Structure
 
 ```text
-index.html      The dictionary entry
-styles.css      Monochrome grid, typography and responsive fit
-script.js       Random grid blocks, click to add and drag
+index.html        The title page
+styles.css        Paper palette, typography and responsive fit
 public/
-  fonts/        Newsreader roman, italic and license
+  favicon.svg     The asterisk mark
+  fonts/          Newsreader roman, italic and license
   robots.txt
   sitemap.xml
-vercel.json     Redirects, SPA rewrite, security headers
+vercel.json       Redirects and security headers
 ```
 
 ## Deployment
