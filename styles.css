@@ -40,7 +40,11 @@ body {
   min-height: 100%;
   margin: 0;
   overflow: hidden;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: url("/paper.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 16px;
@@ -96,10 +100,7 @@ p {
   width: 1.12em;
   height: 1.12em;
   color: var(--accent);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.25;
-  stroke-linecap: round;
+  fill: currentColor;
 }
 
 .brand-letter {
@@ -121,6 +122,10 @@ p {
   font-weight: 300;
   line-height: 0.88;
   letter-spacing: -0.055em;
+}
+
+.company-period {
+  color: var(--accent);
 }
 
 .tagline {
