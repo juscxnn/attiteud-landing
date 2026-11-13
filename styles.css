@@ -21,30 +21,29 @@
 }
 
 :root {
-  --paper: #f3ecdf;
-  --ink: #1c1916;
+  --sky: #dceaf4;
+  --ink: #17232c;
   --accent: #9d3f2d;
-  --rule: rgba(28, 25, 22, 0.16);
+  --rule: rgba(23, 35, 44, 0.18);
   --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   color-scheme: light;
 }
 
 html {
   height: 100%;
-  background: var(--paper);
+  background: var(--sky);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
+  position: relative;
   min-height: 100%;
   margin: 0;
   overflow: hidden;
-  background-color: var(--paper);
-  background-image: url("/paper.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  isolation: isolate;
+  background-color: var(--sky);
+  background-image: linear-gradient(180deg, #e9f4fb 0%, #dceaf4 48%, #cfe1ef 100%);
   color: var(--ink);
   font-family: var(--serif);
   font-size: 16px;
@@ -56,6 +55,21 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/clouds.webp");
+  background-position: 50% 50%;
+  background-repeat: repeat-x;
+  background-size: 1600px auto;
+  opacity: 0.94;
+  animation: cloud-drift 90s linear infinite;
+  will-change: background-position;
+}
+
 h1,
 p {
   margin: 0;
@@ -63,10 +77,12 @@ p {
 
 ::selection {
   background: var(--ink);
-  color: var(--paper);
+  color: var(--sky);
 }
 
 .page {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   width: 100%;
@@ -88,7 +104,7 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.55em;
+  gap: 0.16em;
   margin-bottom: clamp(28px, 5.5vh, 56px);
   color: var(--ink);
   font-size: clamp(1.5rem, 2.2vw, 2rem);
@@ -97,10 +113,11 @@ p {
 
 .asterisk {
   flex: none;
-  width: 1.12em;
-  height: 1.12em;
+  width: 1.1em;
+  height: 1.1em;
   color: var(--accent);
   fill: currentColor;
+  transform: translateY(-0.06em);
 }
 
 .brand-letter {
@@ -230,7 +247,21 @@ p {
   }
 }
 
+@keyframes cloud-drift {
+  from {
+    background-position: 50% 50%;
+  }
+
+  to {
+    background-position: calc(50% - 1600px) 50%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+
   .email {
     transition: none;
   }
